@@ -12,6 +12,14 @@
         android:textSize="40sp"
         android:layout_centerInParent="true"
         android:text="Inicio de sesión"
+        android:id="@+id/texto1"
         />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/texto1"
+        android:text="entrar"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
