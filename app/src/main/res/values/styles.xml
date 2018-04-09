@@ -8,8 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="gestion_viajes" parent="Theme.AppCompat.NoActionBar" >
+    <style name="gestion_viajes" parent="Theme.AppCompat.NoActionBar">
         <item name="colorAccent">@android:color/holo_orange_light</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
