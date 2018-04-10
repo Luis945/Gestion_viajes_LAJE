@@ -24,14 +24,14 @@ public class ventana_principal extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                       .setAction("Action", null).show();
-            }
-        });
+       // FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        //fab.setOnClickListener(new View.OnClickListener() {
+          //  @Override
+            //public void onClick(View view) {
+              //  Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                //       .setAction("Action", null).show();
+            //}
+        //});
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -80,16 +80,15 @@ public class ventana_principal extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-
+        android.support.v4.app.Fragment fragment=null;
+        boolean fragmenttranaction=false;
 
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+
+            fragment= new nueva_Basee();
+            fragmenttranaction=true;
         } else if (id == R.id.nav_gallery) {
-
-
-
 
         } else if (id == R.id.nav_slideshow) {
 
