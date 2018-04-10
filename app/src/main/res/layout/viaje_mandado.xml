@@ -1,62 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.android.com/apk/res/android ">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:orientation="vertical"
         android:layout_marginTop="5px">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:layout_weight="1">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Fecha: "
-                android:layout_weight="3"/>
+                android:layout_weight="3" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="aquí va la fecha"
                 android:layout_weight="1"
-                android:id="@+id/lbl_fecha"/>
+                android:id="@+id/lbl_fecha" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:layout_weight="1">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:text="Teléfono"/>
+                android:text="Teléfono" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="Aquí va el teléfono"
-                android:id="@+id/lbl_teléfono"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:text="Dirección"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Aquí va la dirección del viaje"
-                android:id="@+id/lbl_direccion"/>
+                android:id="@+id/lbl_teléfono" />
         </LinearLayout>
 
         <LinearLayout
@@ -64,6 +56,27 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:text="Dirección" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Aquí va la dirección del viaje"
+                android:id="@+id/lbl_direccion" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -75,33 +88,37 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="Unidad"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="aquí va el numero"
                     android:textAlignment="center"
-                    android:id="@+id/lbl_unidad"/>
+                    android:id="@+id/lbl_unidad" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="Operadora"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:textAlignment="center"
                     android:text="aquí va la operadora"
-                    android:id="@+id/lbl_operadora"/>
+                    android:id="@+id/lbl_operadora" />
             </LinearLayout>
 
         </LinearLayout>
