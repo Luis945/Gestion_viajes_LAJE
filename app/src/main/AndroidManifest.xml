@@ -22,7 +22,6 @@
             android:name=".ventana_principal"
             android:label="@string/title_activity_ventana_principal"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Nueva_Base"></activity>
     </application>
 
 </manifest>
