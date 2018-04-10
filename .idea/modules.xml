@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Gestion_viajes_LAJE.iml" filepath="$PROJECT_DIR$/Gestion_viajes_LAJE.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Gestion_viajes_LAJE.iml" filepath="$PROJECT_DIR$/Gestion_viajes_LAJE.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/gestion_viajes.iml" filepath="$PROJECT_DIR$/gestion_viajes.iml" />
-      <module fileurl="file://C:\Users\Emmanuel\AndroidStudioProjects\Gestion_viajes_LAJE\gestion_viajes.iml" filepath="C:\Users\Emmanuel\AndroidStudioProjects\Gestion_viajes_LAJE\gestion_viajes.iml" />
     </modules>
   </component>
 </project>
