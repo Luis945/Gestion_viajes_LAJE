@@ -18,7 +18,8 @@ import android.view.MenuItem;
 
 public class ventana_principal extends AppCompatActivity
         implements OnNavigationItemSelectedListener,nueva_Basee.OnFragmentInteractionListener,
-        Nueva_colonia.OnFragmentInteractionListener,Nueva_unidad.OnFragmentInteractionListener,Nuevo_operador.OnFragmentInteractionListener
+        Nueva_colonia.OnFragmentInteractionListener,Nueva_unidad.OnFragmentInteractionListener,Nuevo_operador.OnFragmentInteractionListener,
+        ventana.OnFragmentInteractionListener
 
 
 {
@@ -42,6 +43,11 @@ public class ventana_principal extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        android.support.v4.app.Fragment fragment= new ventana();
+        getSupportFragmentManager().beginTransaction().replace(R.id.cambio,fragment).commit();
+        getSupportActionBar().setTitle("ventana");
+
     }
 
     @Override
