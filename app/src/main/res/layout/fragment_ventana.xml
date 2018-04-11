@@ -1,18 +1,34 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.luis.gestion_viajes.ventana"
+    android:background="@color/colorPrimary"
     >
 
     <!-- TODO: Update blank fragment layout -->
-    <ListView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listaViajes"
-        tools:listitem="@layout/viaje_mandado">
+        android:orientation="vertical">
 
-    </ListView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Viajes Mandados"
+            android:textAlignment="center"
+            />
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listaViajes"
+            tools:listitem="@layout/viaje_mandado"
+            android:background="#ffff">
+
+        </ListView>
+
+    </LinearLayout>
 
 
 
