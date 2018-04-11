@@ -109,6 +109,7 @@ public class Nueva_colonia extends Fragment {
                    public void onResponse(JSONObject response) {
                        Toast.makeText(getContext(), "regitro existoso", Toast.LENGTH_SHORT).show();
                         Log.d("Kek", ""+response);
+                        nombre.setText("");
 
                    }
                },
