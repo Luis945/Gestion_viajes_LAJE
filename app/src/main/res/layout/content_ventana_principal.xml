@@ -8,10 +8,11 @@
     tools:context="com.example.luis.gestion_viajes.ventana_principal"
     tools:showIn="@layout/app_bar_ventana_principal">
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/listaViajes">
-    </ListView>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/cambio">
+
+</FrameLayout>
 
 </RelativeLayout>

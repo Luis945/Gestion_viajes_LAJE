@@ -109,7 +109,7 @@ public class ventana_principal extends AppCompatActivity
 
         if (fragmenttransaction)
         {
-            getSupportFragmentManager().beginTransaction().replace(R.id.drawer_layout,fragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.cambio,fragment).commit();
             getSupportActionBar().setTitle(item.getTitle());
         }
 
