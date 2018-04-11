@@ -1,7 +1,10 @@
 package com.example.luis.gestion_viajes;
 
+import android.app.Fragment;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView.OnNavigationItemSelectedListener;
 import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -14,23 +17,29 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class ventana_principal extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements OnNavigationItemSelectedListener,nueva_Basee.OnFragmentInteractionListener,
+        Nueva_colonia.OnFragmentInteractionListener,Nueva_unidad.OnFragmentInteractionListener,Nuevo_operador.OnFragmentInteractionListener
 
+
+{
+    private NavigationView navview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ventana_principal);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        navview = (NavigationView) findViewById(R.id.nav_view);
+        navview.setNavigationItemSelectedListener(this);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+       // FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        //fab.setOnClickListener(new View.OnClickListener() {
+          //  @Override
+            //public void onClick(View view) {
+              //  Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                //       .setAction("Action", null).show();
+            //}
+        //});
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -80,22 +89,44 @@ public class ventana_principal extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        android.support.v4.app.Fragment fragment=null;
+        boolean fragmenttransaction=false;
 
-        } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_manage) {
+        if (id == R.id.nuevabase) {
 
+            fragment= new nueva_Basee();
+            fragmenttransaction=true;
+        } else if (id == R.id.nuevooperador) {
+
+            fragment= new Nuevo_operador();
+            fragmenttransaction=true;
+        } else if (id == R.id.nuevacolonia) {
+            fragment= new Nueva_colonia();
+            fragmenttransaction=true;
+
+        } else if (id == R.id.nuevaunidad) {
+            fragment= new Nueva_unidad();
+            fragmenttransaction=true;
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
 
         }
 
+        if (fragmenttransaction)
+        {
+            getSupportFragmentManager().beginTransaction().replace(R.id.drawer_layout,fragment).commit();
+            getSupportActionBar().setTitle(item.getTitle());
+        }
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
