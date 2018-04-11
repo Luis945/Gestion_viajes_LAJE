@@ -24,7 +24,8 @@
             android:layout_height="match_parent"
             android:id="@+id/listaViajes"
             tools:listitem="@layout/viaje_mandado"
-            android:background="#ffff">
+            android:background="#ffff"
+            >
 
         </ListView>
 
