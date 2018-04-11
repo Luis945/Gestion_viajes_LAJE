@@ -7,6 +7,22 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.luis.gestion_viajes.objetos.Colonia;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.zip.Inflater;
 
 
 /**
@@ -50,13 +66,17 @@ public class Nueva_colonia extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
+            Button registrar;
+            EditText nombre;
+            String url_post = "rtaxis.uttsistemas.com/nuevacolonia";
+    RequestQueue request;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
@@ -64,7 +84,47 @@ public class Nueva_colonia extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_nueva_colonia, container, false);
+        View v = inflater.inflate(R.layout.fragment_nueva_colonia, container, false);
+        registrar=(Button)v.findViewById(R.id.registrar);
+        nombre=(EditText)v.findViewById(R.id.txt_nombre);
+        request = Singleton.getInstance(getContext()).getRequestQueue();
+       registrar.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               JSONObject colonia = new JSONObject();
+
+
+               try {
+                   colonia.put("nombre", nombre.getText().toString());
+
+
+
+               } catch (JSONException ex) {
+                   ex.printStackTrace();
+               }
+
+               JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url_post, colonia, new Response.Listener<JSONObject>() {
+                   @Override
+                   public void onResponse(JSONObject response) {
+                       Toast.makeText(getContext(), "regitro existoso", Toast.LENGTH_SHORT).show();
+
+
+                   }
+               },
+                       new Response.ErrorListener() {
+                           @Override
+                           public void onErrorResponse(VolleyError error) {
+                               Toast.makeText(getContext(), "regitro fallido", Toast.LENGTH_SHORT).show();
+                           }
+                       }
+               );
+
+               jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(1000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+               request.add(jsonObjectRequest);
+           }
+       });
+        return v;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -90,6 +150,7 @@ public class Nueva_colonia extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
 
     /**
      * This interface must be implemented by activities that contain this
