@@ -84,15 +84,15 @@ public class ventana_principal extends AppCompatActivity
         //boolean fragmenttransaction=false;
 
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nuevabase) {
 
             //fragment= new nueva_Basee();
             //fragmenttransaction=true;
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nuevooperador) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nuevacolonia) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nuevaunidad) {
 
         } else if (id == R.id.nav_share) {
 
