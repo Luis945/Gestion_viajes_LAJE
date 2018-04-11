@@ -45,7 +45,7 @@
                 />
             <EditText
                 android:layout_width="200dp"
-                android:layout_height="35dp"
+                android:layout_height="50dp"
                 android:layout_marginLeft="130dp"
                 android:id="@+id/txt_nombre"/>
 
@@ -68,7 +68,7 @@
                 />
             <EditText
                 android:layout_width="200dp"
-                android:layout_height="35dp"
+                android:layout_height="50dp"
                 android:layout_marginLeft="130dp"
                 android:id="@+id/txt_apellidos"/>
         </RelativeLayout>
@@ -113,9 +113,10 @@
                 />
             <EditText
                 android:layout_width="200dp"
-                android:layout_height="35dp"
+                android:layout_height="50dp"
                 android:layout_marginLeft="130dp"
-                android:id="@+id/txt_pass"/>
+                android:id="@+id/txt_pass"
+                android:inputType="textPassword"/>
 
         </RelativeLayout>
 
