@@ -25,7 +25,7 @@
             android:id="@+id/listaViajes"
             tools:listitem="@layout/viaje_mandado"
             android:background="#ffff"
-            >
+            android:layout_margin="5dp">
 
         </ListView>
 
