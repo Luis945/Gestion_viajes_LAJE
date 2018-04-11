@@ -80,14 +80,14 @@ public class ventana_principal extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        android.support.v4.app.Fragment fragment=null;
-        boolean fragmenttranaction=false;
+        //android.support.v4.app.Fragment fragment=null;
+        //boolean fragmenttransaction=false;
 
 
         if (id == R.id.nav_camera) {
 
-            fragment= new nueva_Basee();
-            fragmenttranaction=true;
+            //fragment= new nueva_Basee();
+            //fragmenttransaction=true;
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
@@ -99,6 +99,12 @@ public class ventana_principal extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         }
+
+        //if (fragmenttransaction)
+        //{
+          //  getSupportFragmentManager().beginTransaction().replace(R.id.drawer_layout,fragment).commit();
+            //getSupportActionBar().setTitle(item.getTitle());
+        //}
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
