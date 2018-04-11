@@ -85,8 +85,11 @@ public class ventana_principal extends AppCompatActivity
         android.support.v4.app.Fragment fragment=null;
         boolean fragmenttransaction=false;
 
+        if (id== R.id.ventana_p) {
+            fragment= new ventana();
+            fragmenttransaction=true;
 
-        if (id == R.id.nuevabase) {
+        }else if (id == R.id.nuevabase) {
 
             fragment= new nueva_Basee();
             fragmenttransaction=true;
@@ -101,9 +104,9 @@ public class ventana_principal extends AppCompatActivity
         } else if (id == R.id.nuevaunidad) {
             fragment= new Nueva_unidad();
             fragmenttransaction=true;
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.verviaje) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.vercliente) {
 
         }
 
