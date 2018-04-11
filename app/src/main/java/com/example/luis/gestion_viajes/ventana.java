@@ -9,6 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.example.luis.gestion_viajes.adaptadores.viajesAdapter;
+import com.example.luis.gestion_viajes.objetos.Viaje;
+
+import java.util.ArrayList;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -65,12 +70,18 @@ public class ventana extends Fragment {
 
     }
     ListView listView;
+    ArrayList<Viaje> viajes= new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        listView= (ListView) getView().findViewById(R.id.listaViajes);
-        return inflater.inflate(R.layout.fragment_ventana, container, false);
+        View view= inflater.inflate(R.layout.fragment_ventana, container, false);
+
+        listView= (ListView) view.findViewById(R.id.listaViajes);
+        viajesAdapter viajesAdapter= new viajesAdapter(viajes,getContext());
+
+        listView.setAdapter(viajesAdapter);
+        listView.invalidateViews();
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
