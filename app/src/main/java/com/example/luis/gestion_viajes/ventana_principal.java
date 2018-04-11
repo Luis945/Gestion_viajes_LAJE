@@ -106,7 +106,7 @@ public class ventana_principal extends AppCompatActivity
             fragmenttransaction=true;
 
         } else if (id == R.id.nuevaunidad) {
-            fragment= new Nueva_colonia();
+            fragment= new Nueva_unidad();
             fragmenttransaction=true;
         } else if (id == R.id.nav_share) {
 
