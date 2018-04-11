@@ -29,6 +29,7 @@
 
     <item android:title="Ver">
         <menu>
+
             <item
                 android:id="@+id/verviaje"
                 android:icon="@drawable/ic_menu_share"
@@ -37,18 +38,17 @@
                 android:id="@+id/vercliente"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Ver clientes" />
+            <item
+                android:title="Ver Operadoras"
+                android:id="@+id/veroperadora" />
+            <item
+                android:id="@+id/vercolonia"
+                android:title="Ver Colonias" />
 
-            <item android:title="Ver Operadoras"
-                android:id="@+id/veroperadora">
+            <item
+                android:id="@+id/verunidades"
+                android:title="Ver Unidades" />
 
-            </item>
-            <item android:id="@+id/vercolonia"
-                android:title="Ver Colonias">
-            </item>
-
-            <item android:id="@+id/verunidades"
-                android:title="Ver Unidades">
-            </item>
 
         </menu>
     </item>
