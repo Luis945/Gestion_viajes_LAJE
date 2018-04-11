@@ -7,6 +7,20 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.luis.gestion_viajes.objetos.Colonia;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 /**
@@ -17,7 +31,7 @@ import android.view.ViewGroup;
  * Use the {@link Nueva_colonia#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Nueva_colonia extends Fragment {
+public class Nueva_colonia extends Fragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -50,14 +64,21 @@ public class Nueva_colonia extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
+            Button registrar;
+            EditText nombre;
+            String url_post = "http://rtaxis.uttsistemas.com/nuevacolonia";
+    RequestQueue request;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
+
+
+
     }
 
     @Override
@@ -65,6 +86,7 @@ public class Nueva_colonia extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_nueva_colonia, container, false);
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -89,6 +111,11 @@ public class Nueva_colonia extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 
     /**
