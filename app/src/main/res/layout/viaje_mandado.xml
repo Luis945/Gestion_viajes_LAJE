@@ -33,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:text="Teléfono"/>
+                android:text="Teléfono: "/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -50,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:text="Dirección"/>
+                android:text="Dirección: "/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -58,7 +58,6 @@
                 android:text="Aquí va la dirección del viaje"
                 android:id="@+id/lbl_direccion"/>
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -74,7 +73,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Unidad"
+                    android:text="Unidad: "
                     android:textAlignment="center"/>
                 <TextView
                     android:layout_width="match_parent"
@@ -93,7 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Operadora"
+                    android:text="Operadora: "
                     android:textAlignment="center"/>
                 <TextView
                     android:layout_width="match_parent"
