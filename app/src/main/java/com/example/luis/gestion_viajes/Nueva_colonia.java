@@ -80,6 +80,7 @@ public class Nueva_colonia extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -87,6 +88,7 @@ public class Nueva_colonia extends Fragment {
         View v = inflater.inflate(R.layout.fragment_nueva_colonia, container, false);
         registrar=(Button)v.findViewById(R.id.registrar);
         nombre=(EditText)v.findViewById(R.id.txt_nombre);
+
         request = Singleton.getInstance(getContext()).getRequestQueue();
        registrar.setOnClickListener(new View.OnClickListener() {
            @Override
