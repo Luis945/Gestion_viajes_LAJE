@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,7 +69,7 @@ public class Nueva_colonia extends Fragment {
     }
             Button registrar;
             EditText nombre;
-            String url_post = "rtaxis.uttsistemas.com/nuevacolonia";
+            String url_post = "http://rtaxis.uttsistemas.com/nuevacolonia";
     RequestQueue request;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -99,8 +100,6 @@ public class Nueva_colonia extends Fragment {
                try {
                    colonia.put("nombre", nombre.getText().toString());
 
-
-
                } catch (JSONException ex) {
                    ex.printStackTrace();
                }
@@ -109,7 +108,7 @@ public class Nueva_colonia extends Fragment {
                    @Override
                    public void onResponse(JSONObject response) {
                        Toast.makeText(getContext(), "regitro existoso", Toast.LENGTH_SHORT).show();
-
+                        Log.d("Kek", ""+response);
 
                    }
                },
@@ -117,6 +116,7 @@ public class Nueva_colonia extends Fragment {
                            @Override
                            public void onErrorResponse(VolleyError error) {
                                Toast.makeText(getContext(), "regitro fallido", Toast.LENGTH_SHORT).show();
+                               Log.d("error", ""+error);
                            }
                        }
                );
