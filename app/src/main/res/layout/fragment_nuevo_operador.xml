@@ -2,12 +2,162 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.luis.gestion_viajes.Nuevo_operador">
+    tools:context="com.example.luis.gestion_viajes.Nuevo_operador"
+    android:background="@color/amarillo">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Nuevo operador"
+            android:fontFamily="@font/montserrat"
+            android:textAlignment="center"
+            android:textSize="40dp"
+            android:layout_marginBottom="15dp"
+            android:id="@+id/titulo"
+
+            />
+        <RelativeLayout
+            android:layout_width="320dp"
+            android:layout_height="10dp"
+            android:layout_below="@id/titulo"
+            android:background="#000"
+            android:layout_centerInParent="true"></RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/titulo"
+            android:id="@+id/contenedor_nombre"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="95dp"
+                android:layout_height="50dp"
+                android:text="Nombre"
+                android:fontFamily="@font/montserrat"
+                android:textSize="23dp"
+                android:layout_marginLeft="20dp"
+
+                />
+            <EditText
+                android:layout_width="200dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="130dp"
+                android:id="@+id/txt_nombre"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/contenedor_nombre"
+            android:id="@+id/contenedor_dir">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_height="50dp"
+                android:text="Apellidos"
+                android:fontFamily="@font/montserrat"
+                android:textSize="23dp"
+                android:layout_marginLeft="20dp"
+
+                />
+            <EditText
+                android:layout_width="200dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="130dp"
+                android:id="@+id/txt_apellidos"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/contenedor_dir"
+            android:id="@+id/contendedor_tipo">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_height="50dp"
+                android:text="Tipo"
+                android:fontFamily="@font/montserrat"
+                android:textSize="23dp"
+                android:layout_marginLeft="20dp"
+
+                />
+            <Spinner
+                android:layout_width="239dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="130dp"
+                android:id="@+id/combotipo"></Spinner>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/contendedor_tipo"
+            android:id="@+id/contenedor_pass">
+
+
+            <TextView
+                android:layout_width="109dp"
+                android:layout_height="50dp"
+                android:text="Password"
+                android:fontFamily="@font/montserrat"
+                android:textSize="23dp"
+                android:layout_marginLeft="20dp"
+
+                />
+            <EditText
+                android:layout_width="200dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="130dp"
+                android:id="@+id/txt_pass"/>
+
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:id="@+id/contenedorbotones"
+            android:layout_below="@id/contenedor_pass"
+            android:layout_marginTop="50dp">
+
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="70dp"
+                android:id="@+id/registrar"
+                android:text="Registrar"
+                android:textColor="#fff"
+                android:fontFamily="@font/montserrat"
+                android:background="#000"
+                android:layout_marginLeft="20dp"
+                />
+
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="70dp"
+                android:id="@+id/limpiar"
+                android:text="Limpiar"
+                android:textColor="#fff"
+                android:fontFamily="@font/montserrat"
+                android:background="#000"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                />
+        </RelativeLayout>
+
+
+
+
+
+
+
+    </RelativeLayout>
 
 </FrameLayout>
