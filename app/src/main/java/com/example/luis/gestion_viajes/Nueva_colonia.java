@@ -66,6 +66,8 @@ public class Nueva_colonia extends Fragment {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+
+
     }
             Button registrar;
             EditText nombre;
@@ -95,14 +97,13 @@ public class Nueva_colonia extends Fragment {
            @Override
            public void onClick(View view) {
                JSONObject colonia = new JSONObject();
-
-
                try {
                    colonia.put("nombre", nombre.getText().toString());
 
                } catch (JSONException ex) {
                    ex.printStackTrace();
                }
+
 
                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url_post, colonia, new Response.Listener<JSONObject>() {
                    @Override
