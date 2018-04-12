@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".iniciarsesion">
+    tools:context=".iniciosesion">
 
     <RelativeLayout
         android:background="@color/amarillo"
@@ -23,10 +23,10 @@
 
     </RelativeLayout>
 
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="70dp">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/imagen"
@@ -34,31 +34,30 @@
             android:layout_height="150dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="100dp"
             android:background="@mipmap/imguser" />
 
 
         <EditText
-            android:id="@+id/txtusuario"
+            android:textSize="22dp"
+            android:id="@+id/txtuser"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:hint="Usuario"
-            android:textSize="22dp" />
+            android:hint="Usuario"/>
 
         <EditText
-            android:id="@+id/txtcontra"
+            android:textSize="22dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/txtpass"
+            android:layout_below="@id/txtuser"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="152dp"
-            android:hint="Contraseña"
-            android:inputType="textPassword"
-            android:textSize="22dp" />
+            android:layout_centerInParent="true"
+            android:hint="Contraseña"/>
 
         <Button
-            android:id="@+id/btninisesion"
+            android:id="@+id/btnini"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -69,6 +68,9 @@
             android:text="Iniciar Sesión"
             android:textColor="@color/blanco" />
 
+
+
     </RelativeLayout>
+
 
 </RelativeLayout>

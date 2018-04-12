@@ -7,25 +7,26 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class Login extends AppCompatActivity implements View.OnClickListener {
-    Intent intent;
-    Button b;
+public class iniciosesion extends AppCompatActivity implements View.OnClickListener {
+
+    Button botonir;
+    Intent intentir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_iniciosesion);
 
-        Button button= findViewById(R.id.button);
-        button.setOnClickListener(this);
+        botonir = (Button) findViewById(R.id.btnini);
+        botonir.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btninisesion:{
-                Intent t;
-                t = new Intent(getApplicationContext(),ventana_principal.class); 
+            case R.id.btnini:{
+                intentir = new Intent(getApplicationContext(),ventana_principal.class);
+                startActivity(intentir);
             }break;
             default:{
                 Toast.makeText(this, "¡Selección Invalida!", Toast.LENGTH_SHORT).show();
