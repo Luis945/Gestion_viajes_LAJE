@@ -9,8 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.Volley;
 import com.example.luis.gestion_viajes.adaptadores.viajesAdapter;
 import com.example.luis.gestion_viajes.objetos.Viaje;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -23,7 +29,7 @@ import java.util.ArrayList;
  * Use the {@link ventana#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ventana extends Fragment {
+public class ventana extends Fragment implements Response.Listener<JSONObject>,Response.ErrorListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -54,7 +60,6 @@ public class ventana extends Fragment {
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
-
         return fragment;
     }
 
@@ -64,13 +69,14 @@ public class ventana extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-
         }
-
-
     }
+
     ListView listView;
     ArrayList<Viaje> viajes= new ArrayList<>();
+    String url="rtaxis.uttsistemas.com/verviajes";
+    JSONObject object;
+    RequestQueue queue;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -78,6 +84,9 @@ public class ventana extends Fragment {
 
         listView= (ListView) view.findViewById(R.id.listaViajes);
         viajesAdapter viajesAdapter= new viajesAdapter(viajes,getContext());
+        object= new JSONObject();
+        queue= Volley.newRequestQueue(view.getContext());
+
 
         listView.setAdapter(viajesAdapter);
         listView.invalidateViews();
@@ -106,6 +115,16 @@ public class ventana extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+
+    }
+
+    @Override
+    public void onResponse(JSONObject response) {
+
     }
 
     /**
