@@ -23,6 +23,7 @@ import com.example.luis.gestion_viajes.adaptadores.viajesAdapter;
 import com.example.luis.gestion_viajes.objetos.Viaje;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -90,13 +91,10 @@ public class ventana extends Fragment implements Response.Listener<String>,Respo
         View view= inflater.inflate(R.layout.fragment_ventana, container, false);
 
         listView= (ListView) view.findViewById(R.id.listaViajes);
-        viajesAdapter viajesAdapter= new viajesAdapter(viajes,getContext());
 
 
     cargarViajes();
         //añadir al adapter y al listview
-        listView.setAdapter(viajesAdapter);
-        listView.invalidateViews();
         return view;
     }
 
@@ -143,6 +141,30 @@ public class ventana extends Fragment implements Response.Listener<String>,Respo
     public void onResponse(String response) {
         Toast.makeText(getContext(), "conectado", Toast.LENGTH_SHORT).show();
         Log.d("ejemplo", ""+response.toString());
+
+        try{
+
+            JSONArray array= new JSONArray(response);
+            for (int i = 0; i < array.length(); i++) {
+
+                JSONObject object= array.getJSONObject(i);
+
+                viajes.add(new Viaje(
+                        Integer.parseInt(object.getString("unidad")),
+                        Integer.parseInt(object.getString("operadora")),
+                        object.getString("telefono"),
+                        object.getString("direccion"),
+                        object.getString("fecha_viaje")
+                ));
+            }
+            viajesAdapter viajesAdapter= new viajesAdapter(viajes,getContext());
+            listView.setAdapter(viajesAdapter);
+            listView.invalidateViews();
+
+
+        }catch (JSONException e){
+            Log.d("error del json", "onResponse: "+e);
+        }
 
     }
 
