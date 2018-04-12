@@ -4,18 +4,23 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.luis.gestion_viajes.adaptadores.viajesAdapter;
 import com.example.luis.gestion_viajes.objetos.Viaje;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -74,8 +79,10 @@ public class ventana extends Fragment implements Response.Listener<JSONObject>,R
 
     ListView listView;
     ArrayList<Viaje> viajes= new ArrayList<>();
-    String url="rtaxis.uttsistemas.com/verviajes";
+    String url="http://rtaxis.uttsistemas.com/verviajes";
     JSONObject object;
+    JSONArray array;
+
     RequestQueue queue;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -86,8 +93,14 @@ public class ventana extends Fragment implements Response.Listener<JSONObject>,R
         viajesAdapter viajesAdapter= new viajesAdapter(viajes,getContext());
         object= new JSONObject();
         queue= Volley.newRequestQueue(view.getContext());
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url,null,this,this);
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        queue.add(jsonObjectRequest);
 
 
+
+        //añadir al adapter y al listview
         listView.setAdapter(viajesAdapter);
         listView.invalidateViews();
         return view;
@@ -119,11 +132,14 @@ public class ventana extends Fragment implements Response.Listener<JSONObject>,R
 
     @Override
     public void onErrorResponse(VolleyError error) {
-
+        Toast.makeText(getContext(), "no se pudo encontrar", Toast.LENGTH_SHORT).show();
+        Log.e("error de conexión", "onErrorResponse: "+error.toString());
     }
 
     @Override
     public void onResponse(JSONObject response) {
+        Toast.makeText(getContext(), "conectado", Toast.LENGTH_SHORT).show();
+        Log.d("ejemplo", ""+response.toString());
 
     }
 
