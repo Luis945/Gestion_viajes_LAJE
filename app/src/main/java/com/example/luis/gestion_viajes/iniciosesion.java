@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class iniciosesion extends AppCompatActivity {
+public class iniciosesion extends AppCompatActivity implements View.OnClickListener{
 
     Button botonir;
     Intent intentir;
@@ -18,10 +18,10 @@ public class iniciosesion extends AppCompatActivity {
         setContentView(R.layout.activity_iniciosesion);
 
         botonir = (Button) findViewById(R.id.btnini);
-        //botonir.setOnClickListener(this);
+        botonir.setOnClickListener(this);
     }
 
-    /*public void onClick(View view) {
+    public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnini:{
                 intentir = new Intent(getApplicationContext(),ventana_principal.class);
@@ -31,5 +31,5 @@ public class iniciosesion extends AppCompatActivity {
                 Toast.makeText(this, "¡Selección Invalida!", Toast.LENGTH_SHORT).show();
             }break;
         }
-    }*/
+    }
 }
