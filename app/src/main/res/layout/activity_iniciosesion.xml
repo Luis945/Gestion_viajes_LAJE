@@ -66,7 +66,8 @@
             android:background="@color/azul"
             android:fontFamily="@font/montserrat"
             android:text="Iniciar Sesión"
-            android:textColor="@color/blanco" />
+            android:textColor="@color/blanco"
+            android:onClick="onClick"/>
 
 
 
