@@ -19,7 +19,7 @@ import android.view.MenuItem;
 public class ventana_principal extends AppCompatActivity
         implements OnNavigationItemSelectedListener,nueva_Basee.OnFragmentInteractionListener,
         Nueva_colonia.OnFragmentInteractionListener,Nueva_unidad.OnFragmentInteractionListener,Nuevo_operador.OnFragmentInteractionListener,
-        ventana.OnFragmentInteractionListener
+        ventana.OnFragmentInteractionListener,ver_unidades.OnFragmentInteractionListener
 
 
 {
@@ -114,6 +114,11 @@ public class ventana_principal extends AppCompatActivity
 
         } else if (id == R.id.vercliente) {
 
+        }
+        else if (id==R.id.verunidades)
+        {
+            fragment= new ver_unidades();
+            fragmenttransaction=true;
         }
 
         if (fragmenttransaction)
