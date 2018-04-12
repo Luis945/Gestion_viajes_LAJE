@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intent= new Intent(getApplicationContext(),ventana_principal.class);
-
                 startActivity(intent);
             }
         });

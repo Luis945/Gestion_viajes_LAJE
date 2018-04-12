@@ -4,4 +4,10 @@
     <color name="colorPrimaryDark">#999999</color>
     <color name="colorAccent">#ffb940</color>
     <color name="amarillo">#ffff66</color>
+    <color name="amarillobarra">#cece55</color>
+    <color name="blanco">#fff</color>
+    <color name="azul">#0c96ca</color>
+    <color name="negro">#000</color>
+
 </resources>
+
