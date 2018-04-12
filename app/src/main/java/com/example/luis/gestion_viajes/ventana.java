@@ -4,13 +4,27 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.luis.gestion_viajes.adaptadores.viajesAdapter;
 import com.example.luis.gestion_viajes.objetos.Viaje;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -23,7 +37,7 @@ import java.util.ArrayList;
  * Use the {@link ventana#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ventana extends Fragment {
+public class ventana extends Fragment implements Response.Listener<String>,Response.ErrorListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -54,7 +68,6 @@ public class ventana extends Fragment {
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
-
         return fragment;
     }
 
@@ -64,24 +77,34 @@ public class ventana extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-
         }
-
-
     }
+
     ListView listView;
     ArrayList<Viaje> viajes= new ArrayList<>();
+    String url="http://rtaxis.uttsistemas.com/verviajes";
+
+    RequestQueue queue;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_ventana, container, false);
 
         listView= (ListView) view.findViewById(R.id.listaViajes);
-        viajesAdapter viajesAdapter= new viajesAdapter(viajes,getContext());
 
-        listView.setAdapter(viajesAdapter);
-        listView.invalidateViews();
+
+    cargarViajes();
+        //añadir al adapter y al listview
         return view;
+    }
+
+    private void cargarViajes(){
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,url, this,this);
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+      //  queue.add(jsonObjectRequest);
+        Volley.newRequestQueue(getContext()).add(stringRequest);
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -106,6 +129,43 @@ public class ventana extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        Toast.makeText(getContext(), "no se pudo encontrar", Toast.LENGTH_SHORT).show();
+        Log.e("error de conexión", "onErrorResponse: "+error.toString());
+    }
+
+    @Override
+    public void onResponse(String response) {
+        Toast.makeText(getContext(), "conectado", Toast.LENGTH_SHORT).show();
+        Log.d("ejemplo", ""+response.toString());
+
+        try{
+
+            JSONArray array= new JSONArray(response);
+            for (int i = 0; i < array.length(); i++) {
+
+                JSONObject object= array.getJSONObject(i);
+
+                viajes.add(new Viaje(
+                        Integer.parseInt(object.getString("unidad")),
+                        Integer.parseInt(object.getString("operadora")),
+                        object.getString("telefono"),
+                        object.getString("direccion"),
+                        object.getString("fecha_viaje")
+                ));
+            }
+            viajesAdapter viajesAdapter= new viajesAdapter(viajes,getContext());
+            listView.setAdapter(viajesAdapter);
+            listView.invalidateViews();
+
+
+        }catch (JSONException e){
+            Log.d("error del json", "onResponse: "+e);
+        }
+
     }
 
     /**
