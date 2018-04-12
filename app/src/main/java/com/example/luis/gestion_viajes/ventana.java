@@ -12,10 +12,12 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.luis.gestion_viajes.adaptadores.viajesAdapter;
 import com.example.luis.gestion_viajes.objetos.Viaje;
@@ -34,7 +36,7 @@ import java.util.ArrayList;
  * Use the {@link ventana#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ventana extends Fragment implements Response.Listener<JSONObject>,Response.ErrorListener {
+public class ventana extends Fragment implements Response.Listener<String>,Response.ErrorListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -80,8 +82,6 @@ public class ventana extends Fragment implements Response.Listener<JSONObject>,R
     ListView listView;
     ArrayList<Viaje> viajes= new ArrayList<>();
     String url="http://rtaxis.uttsistemas.com/verviajes";
-    JSONObject object;
-    JSONArray array;
 
     RequestQueue queue;
     @Override
@@ -91,19 +91,22 @@ public class ventana extends Fragment implements Response.Listener<JSONObject>,R
 
         listView= (ListView) view.findViewById(R.id.listaViajes);
         viajesAdapter viajesAdapter= new viajesAdapter(viajes,getContext());
-        object= new JSONObject();
-        queue= Volley.newRequestQueue(view.getContext());
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url,null,this,this);
-        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        queue.add(jsonObjectRequest);
 
 
-
+    cargarViajes();
         //añadir al adapter y al listview
         listView.setAdapter(viajesAdapter);
         listView.invalidateViews();
         return view;
+    }
+
+    private void cargarViajes(){
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,url, this,this);
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+      //  queue.add(jsonObjectRequest);
+        Volley.newRequestQueue(getContext()).add(stringRequest);
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -137,7 +140,7 @@ public class ventana extends Fragment implements Response.Listener<JSONObject>,R
     }
 
     @Override
-    public void onResponse(JSONObject response) {
+    public void onResponse(String response) {
         Toast.makeText(getContext(), "conectado", Toast.LENGTH_SHORT).show();
         Log.d("ejemplo", ""+response.toString());
 
