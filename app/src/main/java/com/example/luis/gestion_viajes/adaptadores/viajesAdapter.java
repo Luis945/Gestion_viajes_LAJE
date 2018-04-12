@@ -18,10 +18,11 @@ import java.util.ArrayList;
 
 public class viajesAdapter extends BaseAdapter {
 
-    ArrayList<Viaje> viajes;
+    ArrayList<Viaje> viajes ;
     Context context;
 
     public viajesAdapter(ArrayList<Viaje> viajes, Context context) {
+        viajes= new ArrayList<>();
         this.viajes = viajes;
         this.context = context;
     }
@@ -46,6 +47,7 @@ public class viajesAdapter extends BaseAdapter {
         Viaje viaje= viajes.get(position);
         View v= convertView;
         v= LayoutInflater.from(context).inflate(R.layout.viaje_mandado,null);
+
 
         TextView fecha, telefono, direccion, unidad,operadora;
         fecha= (TextView) v.findViewById(R.id.lbl_fecha);
