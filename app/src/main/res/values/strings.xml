@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">Gestión de viajes</string>
     <string name="titulo">Radio Taxis Amarillos</string>
-    <string name="iniciar">iniciar</string>
-    <string name="usuario">usuario</string>
-    <string name="contrasena">contraseña</string>
+    <string name="iniciar">Iniciar</string>
+    <string name="usuario">Usuario</string>
+    <string name="contrasena">Contraseña</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_ventana_principal">ventana_principal</string>
+    <string name="title_activity_ventana_principal">Ventana_principal</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

@@ -22,6 +22,7 @@
             android:name=".ventana_principal"
             android:label="@string/title_activity_ventana_principal"
             android:theme="@style/AppTheme" />
+        <activity android:name=".iniciosesion"></activity>
     </application>
 
 </manifest>
