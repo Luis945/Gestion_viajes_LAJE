@@ -18,10 +18,11 @@ import java.util.ArrayList;
 
 public class viajesAdapter extends BaseAdapter {
 
-    ArrayList<Viaje> viajes;
+    ArrayList<Viaje> viajes ;
     Context context;
 
     public viajesAdapter(ArrayList<Viaje> viajes, Context context) {
+        viajes= new ArrayList<>();
         this.viajes = viajes;
         this.context = context;
     }
