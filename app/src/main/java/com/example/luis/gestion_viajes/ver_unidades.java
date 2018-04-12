@@ -40,6 +40,7 @@ import java.util.ArrayList;
 public class ver_unidades extends Fragment implements Response.ErrorListener,Response.Listener<String> {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -49,6 +50,9 @@ public class ver_unidades extends Fragment implements Response.ErrorListener,Res
 
     private OnFragmentInteractionListener mListener;
 
+    ArrayList<Unidad>listaunidades;
+    RecyclerView reciclador;
+    final String URL_GET = "http://rtaxis.uttsistemas.com/verunidades";
     public ver_unidades() {
         // Required empty public constructor
     }
@@ -70,9 +74,7 @@ public class ver_unidades extends Fragment implements Response.ErrorListener,Res
         fragment.setArguments(args);
         return fragment;
     }
-    ArrayList<Unidad>listaunidades;
-    RecyclerView reciclador;
-    final String URL_GET = "http://rtaxis.uttsistemas.com/verunidades";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,7 +141,7 @@ public class ver_unidades extends Fragment implements Response.ErrorListener,Res
                         unidad.getInt("reg"),
                         unidad.getString("estado")
                 ));
-                Toast.makeText(getContext(), unidad.getInt("reg"), Toast.LENGTH_SHORT).show();
+
             }
             unidadesAdapter adaptador = new unidadesAdapter(getContext(), listaunidades);
             reciclador.setAdapter(adaptador);

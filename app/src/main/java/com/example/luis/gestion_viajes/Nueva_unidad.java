@@ -4,9 +4,23 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 /**
@@ -28,7 +42,10 @@ public class Nueva_unidad extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-
+    Button registrar,limpiar;
+    EditText numero_unidad;
+    String url_post = "http://rtaxis.uttsistemas.com/nuevaunidad";
+    RequestQueue request;
     public Nueva_unidad() {
         // Required empty public constructor
     }
@@ -64,7 +81,56 @@ public class Nueva_unidad extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_nueva_unidad, container, false);
+        View v = inflater.inflate(R.layout.fragment_nueva_unidad, container, false);
+        registrar=(Button)v.findViewById(R.id.registrar);
+        limpiar=(Button)v.findViewById(R.id.limpiar);
+        numero_unidad=(EditText)v.findViewById(R.id.num_unidad);
+
+        request = Singleton.getInstance(getContext()).getRequestQueue();
+        registrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                JSONObject unidad = new JSONObject();
+                try {
+                    unidad.put("reg", numero_unidad.getText().toString());
+                    unidad.put("estado","Activo");
+
+
+                } catch (JSONException ex) {
+                    ex.printStackTrace();
+                }
+
+
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url_post, unidad, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Toast.makeText(getContext(), "regitro existoso", Toast.LENGTH_SHORT).show();
+                        Log.d("Kek", ""+response);
+                        numero_unidad.setText("");
+
+                    }
+                },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(getContext(), "regitro fallido", Toast.LENGTH_SHORT).show();
+                                Log.d("error", ""+error);
+                            }
+                        }
+                );
+
+                jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                request.add(jsonObjectRequest);
+            }
+        });
+        limpiar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                numero_unidad.setText("");
+            }
+        });
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

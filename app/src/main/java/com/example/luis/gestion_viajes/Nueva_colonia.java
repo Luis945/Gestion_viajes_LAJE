@@ -69,7 +69,7 @@ public class Nueva_colonia extends Fragment {
 
 
     }
-            Button registrar;
+            Button registrar,limpiar;
             EditText nombre;
             String url_post = "http://rtaxis.uttsistemas.com/nuevacolonia";
     RequestQueue request;
@@ -90,6 +90,7 @@ public class Nueva_colonia extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_nueva_colonia, container, false);
         registrar=(Button)v.findViewById(R.id.registrar);
+        limpiar=(Button)v.findViewById(R.id.limpiar);
         nombre=(EditText)v.findViewById(R.id.txt_nombre);
 
         request = Singleton.getInstance(getContext()).getRequestQueue();
@@ -125,6 +126,13 @@ public class Nueva_colonia extends Fragment {
 
                jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                request.add(jsonObjectRequest);
+           }
+       });
+       limpiar.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+
+               nombre.setText("");
            }
        });
         return v;

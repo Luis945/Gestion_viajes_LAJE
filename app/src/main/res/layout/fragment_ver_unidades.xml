@@ -5,8 +5,6 @@
     tools:context="com.example.luis.gestion_viajes.ver_unidades">
 
     <!-- TODO: Update blank fragment layout -->
-
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/reciclador"
         android:layout_width="match_parent"

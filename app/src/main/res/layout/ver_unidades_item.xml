@@ -11,19 +11,34 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="174dp">
-
+<TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Numero unidad"
+    android:textSize="30dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:id="@+id/num_unidad"
+            android:textSize="20dp"
+
+
+
+            android:fontFamily="@font/montserrat"
+           />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Estado de la unidad"
             android:textSize="30dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:id="@+id/estado"
-
-            android:textSize="30dp"/>
+            android:fontFamily="@font/montserrat"
+            android:textSize="20dp"
+           />
 
 
 
