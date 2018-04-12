@@ -48,6 +48,7 @@ public class viajesAdapter extends BaseAdapter {
         View v= convertView;
         v= LayoutInflater.from(context).inflate(R.layout.viaje_mandado,null);
 
+
         TextView fecha, telefono, direccion, unidad,operadora;
         fecha= (TextView) v.findViewById(R.id.lbl_fecha);
         telefono=(TextView) v.findViewById(R.id.lbl_teléfono);
