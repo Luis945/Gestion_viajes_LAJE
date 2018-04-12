@@ -6,7 +6,7 @@
 
     <group android:checkableBehavior="single">
         <item android:id="@+id/ventana_p"
-            android:title="ventana principal">
+            android:title="Ventana principal">
 
         </item>
         <item
