@@ -67,9 +67,8 @@ public class Nuevo_operador extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
        View v =  inflater.inflate(R.layout.fragment_nuevo_operador, container, false);
-       combotipooperadora=v.findViewById(R.id.combotipo);
-        String [] opc = {"admin","usuario"};
-        combotipooperadora.setAdapter(new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_dropdown_item,opc));
+
+
         return v;
     }
 

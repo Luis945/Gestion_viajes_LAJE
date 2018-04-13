@@ -84,7 +84,7 @@ public class Nueva_unidad extends Fragment {
         View v = inflater.inflate(R.layout.fragment_nueva_unidad, container, false);
         registrar=(Button)v.findViewById(R.id.registrar);
         limpiar=(Button)v.findViewById(R.id.limpiar);
-        numero_unidad=(EditText)v.findViewById(R.id.num_unidad);
+        numero_unidad=(EditText)v.findViewById(R.id.txt_num);
 
         request = Singleton.getInstance(getContext()).getRequestQueue();
         registrar.setOnClickListener(new View.OnClickListener() {
