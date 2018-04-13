@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_below="@id/contenedor_nombre"
-            android:id="@+id/contenedor_dir">
+            android:id="@+id/contenedor_apellidos">
 
             <TextView
                 android:layout_width="110dp"
@@ -73,32 +73,12 @@
                 android:id="@+id/txt_apellidos"/>
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_below="@id/contenedor_dir"
-            android:id="@+id/contendedor_tipo">
 
-            <TextView
-                android:layout_width="110dp"
-                android:layout_height="50dp"
-                android:text="Tipo"
-                android:fontFamily="@font/montserrat"
-                android:textSize="23dp"
-                android:layout_marginLeft="20dp"
-
-                />
-            <Spinner
-                android:layout_width="239dp"
-                android:layout_height="35dp"
-                android:layout_marginLeft="130dp"
-                android:id="@+id/combotipo"></Spinner>
-        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/contendedor_tipo"
+            android:layout_below="@id/contenedor_apellidos"
             android:id="@+id/contenedor_pass">
 
 
