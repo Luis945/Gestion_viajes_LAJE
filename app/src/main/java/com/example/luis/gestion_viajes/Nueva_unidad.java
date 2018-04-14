@@ -85,6 +85,7 @@ public class Nueva_unidad extends Fragment {
         registrar=(Button)v.findViewById(R.id.registrar);
         limpiar=(Button)v.findViewById(R.id.limpiar);
         numero_unidad=(EditText)v.findViewById(R.id.txt_num);
+        final String Activo = "Activo";
 
         request = Singleton.getInstance(getContext()).getRequestQueue();
         registrar.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +94,7 @@ public class Nueva_unidad extends Fragment {
                 JSONObject unidad = new JSONObject();
                 try {
                     unidad.put("reg", numero_unidad.getText().toString());
-                    unidad.put("estado","Activo");
+                    unidad.put("estado",Activo);
 
 
                 } catch (JSONException ex) {

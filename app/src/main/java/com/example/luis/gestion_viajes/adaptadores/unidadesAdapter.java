@@ -40,7 +40,7 @@ public class unidadesAdapter extends RecyclerView.Adapter<unidadesAdapter.DatosV
     @Override
     public void onBindViewHolder(unidadesAdapter.DatosViewHolder holder, int position) {
             Unidad unidad = listaunidades.get(position);
-            holder.num_unidad.setText(unidad.getReg());
+            holder.num_unidad.setText(Integer.toString(unidad.getReg()));
             holder.estado.setText(unidad.getEstado());
 
 
@@ -53,7 +53,7 @@ public class unidadesAdapter extends RecyclerView.Adapter<unidadesAdapter.DatosV
 
     public class DatosViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView num_unidad,estado;
-        List<Unidad>listaunidades;
+        List<Unidad>listaunidades = new ArrayList<>();
         Context context;
 
 

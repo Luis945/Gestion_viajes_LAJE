@@ -27,6 +27,7 @@ import org.json.JSONObject;
 import org.json.JSONStringer;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -50,7 +51,7 @@ public class ver_unidades extends Fragment implements Response.ErrorListener,Res
 
     private OnFragmentInteractionListener mListener;
 
-    ArrayList<Unidad>listaunidades;
+    ArrayList<Unidad> listaunidades;
     RecyclerView reciclador;
     final String URL_GET = "http://rtaxis.uttsistemas.com/verunidades";
     public ver_unidades() {
@@ -91,9 +92,10 @@ public class ver_unidades extends Fragment implements Response.ErrorListener,Res
        View v= inflater.inflate(R.layout.fragment_ver_unidades, container, false);
        listaunidades= new ArrayList<>();
        reciclador=(RecyclerView) v.findViewById(R.id.reciclador);
-       reciclador.setLayoutManager(new LinearLayoutManager(getContext()));
+        reciclador.setLayoutManager(new LinearLayoutManager(getContext()));
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_GET, this, this);
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(6000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         Volley.newRequestQueue(getContext()).add(stringRequest);
 
 
