@@ -16,8 +16,8 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_centerInParent="true"
-            android:fontFamily="@font/roboto_thin"
-            android:text="Inicio de Sesión"
+            android:fontFamily="@font/roboto_light"
+            android:text="Inicia sesión para continuar"
             android:textColor="@color/negro"
             android:textSize="25dp" />
 
@@ -44,8 +44,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="242dp"
-            android:fontFamily="@font/roboto_thin"
+            android:layout_marginBottom="230dp"
+            android:fontFamily="@font/roboto_light"
             android:hint="Usuario"
             android:textSize="22dp" />
 
@@ -55,8 +55,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="168dp"
+            android:layout_marginBottom="155dp"
+            android:fontFamily="@font/roboto_light"
             android:hint="Contraseña"
+            android:inputType="text"
             android:textSize="22dp" />
 
         <Button
@@ -67,10 +69,11 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="64dp"
             android:background="@color/azul"
-            android:fontFamily="@font/montserrat"
+            android:fontFamily="@font/roboto_light"
+            android:onClick="onClick"
             android:text="Iniciar Sesión"
             android:textColor="@color/blanco"
-            android:onClick="onClick"/>
+            android:textSize="20dp" />
 
 
 

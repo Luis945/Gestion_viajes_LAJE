@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.luis.gestion_viajes.R;
 import com.example.luis.gestion_viajes.objetos.Unidad;
@@ -51,7 +52,7 @@ public class unidadesAdapter extends RecyclerView.Adapter<unidadesAdapter.DatosV
         return listaunidades.size();
     }
 
-    public class DatosViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class DatosViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView num_unidad,estado;
         List<Unidad>listaunidades = new ArrayList<>();
         Context context;
@@ -72,7 +73,7 @@ public class unidadesAdapter extends RecyclerView.Adapter<unidadesAdapter.DatosV
 
         @Override
         public void onClick(View view) {
-
+            Toast.makeText(context, "PRUEBA AGARRÉ A ESE BATO", Toast.LENGTH_SHORT).show();
         }
     }
 }
