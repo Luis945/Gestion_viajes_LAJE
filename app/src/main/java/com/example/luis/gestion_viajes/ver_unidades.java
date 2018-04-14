@@ -4,11 +4,15 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -38,7 +42,7 @@ import java.util.List;
  * Use the {@link ver_unidades#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ver_unidades extends Fragment implements Response.ErrorListener,Response.Listener<String> {
+public class ver_unidades extends Fragment implements Response.ErrorListener,Response.Listener<String>,View.OnClickListener,Nueva_unidad.OnFragmentInteractionListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
@@ -52,6 +56,7 @@ public class ver_unidades extends Fragment implements Response.ErrorListener,Res
     private OnFragmentInteractionListener mListener;
 
     ArrayList<Unidad> listaunidades;
+    ImageView imagen;
     RecyclerView reciclador;
     final String URL_GET = "http://rtaxis.uttsistemas.com/verunidades";
     public ver_unidades() {
@@ -92,7 +97,9 @@ public class ver_unidades extends Fragment implements Response.ErrorListener,Res
        View v= inflater.inflate(R.layout.fragment_ver_unidades, container, false);
        listaunidades= new ArrayList<>();
        reciclador=(RecyclerView) v.findViewById(R.id.reciclador);
-        reciclador.setLayoutManager(new LinearLayoutManager(getContext()));
+       imagen=(ImageView)v.findViewById(R.id.mas);
+       imagen.setOnClickListener(this);
+        reciclador.setLayoutManager(new GridLayoutManager(getContext(),2));
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_GET, this, this);
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(6000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
@@ -153,6 +160,24 @@ public class ver_unidades extends Fragment implements Response.ErrorListener,Res
         } catch (JSONException ex) {
             ex.printStackTrace();
         }
+    }
+
+    @Override
+    public void onClick(View view) {
+        Toast.makeText(getContext(), "smn", Toast.LENGTH_SHORT).show();
+        //android.support.v4.app.Fragment fragment=null;
+        //boolean fragmenttransaction=false;
+        //if ( R.id.nuevaunidad==1) {
+          //  fragment = new Nueva_unidad();
+            //fragmenttransaction = true;
+        //}
+
+
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 
     /**

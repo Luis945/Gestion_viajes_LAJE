@@ -100,7 +100,7 @@ public class ventana extends Fragment implements Response.Listener<String>,Respo
 
     private void cargarViajes(){
         StringRequest stringRequest = new StringRequest(Request.Method.GET,url, this,this);
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(6000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
       //  queue.add(jsonObjectRequest);
         Volley.newRequestQueue(getContext()).add(stringRequest);

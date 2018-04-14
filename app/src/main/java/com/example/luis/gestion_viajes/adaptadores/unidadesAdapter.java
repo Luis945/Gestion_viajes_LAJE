@@ -40,8 +40,8 @@ public class unidadesAdapter extends RecyclerView.Adapter<unidadesAdapter.DatosV
     @Override
     public void onBindViewHolder(unidadesAdapter.DatosViewHolder holder, int position) {
             Unidad unidad = listaunidades.get(position);
-            holder.num_unidad.setText(Integer.toString(unidad.getReg()));
-            holder.estado.setText(unidad.getEstado());
+            holder.num_unidad.setText("Unidad: "+ Integer.toString(unidad.getReg()));
+            holder.estado.setText("Estado: "+unidad.getEstado());
 
 
     }

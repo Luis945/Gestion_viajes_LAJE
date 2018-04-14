@@ -23,7 +23,7 @@
             android:title="Nueva colonia" />
         <item
             android:id="@+id/nuevaunidad"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/taxigrande"
             android:title="nueva unidad" />
     </group>
 
@@ -47,7 +47,8 @@
 
             <item
                 android:id="@+id/verunidades"
-                android:title="Ver Unidades" />
+                android:title="Ver Unidades"
+                android:icon="@drawable/taxigrande"/>
 
 
         </menu>
