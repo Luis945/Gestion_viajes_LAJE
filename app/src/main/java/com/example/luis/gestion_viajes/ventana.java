@@ -159,7 +159,7 @@ public class ventana extends Fragment implements Response.Listener<String>,Respo
             }
             viajesAdapter viajesAdapter= new viajesAdapter(viajes,getContext());
             listView.setAdapter(viajesAdapter);
-          //  listView.invalidateViews();
+            listView.invalidateViews();
 
 
         }catch (JSONException e){
