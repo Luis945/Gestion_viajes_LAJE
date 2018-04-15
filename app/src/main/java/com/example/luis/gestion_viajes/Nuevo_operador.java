@@ -4,11 +4,25 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 /**
@@ -30,7 +44,10 @@ public class Nuevo_operador extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-
+    Button registrar,limpiar;
+    EditText nombres,num_op,apellidos,pass;
+    String url_post = "http://rtaxis.uttsistemas.com/nuevooperador";
+    RequestQueue request;
     public Nuevo_operador() {
         // Required empty public constructor
     }
@@ -67,6 +84,66 @@ public class Nuevo_operador extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
        View v =  inflater.inflate(R.layout.fragment_nuevo_operador, container, false);
+        registrar=(Button)v.findViewById(R.id.registrar);
+        limpiar=(Button)v.findViewById(R.id.limpiar);
+       num_op=(EditText)v.findViewById(R.id.txt_num_op);
+       nombres=(EditText)v.findViewById(R.id.txt_nombre);
+       apellidos=(EditText)v.findViewById(R.id.txt_apellidos);
+       pass=(EditText)v.findViewById(R.id.txt_pass);
+
+
+        request = Singleton.getInstance(getContext()).getRequestQueue();
+        registrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                JSONObject operadora = new JSONObject();
+                try {
+                    operadora.put("id",num_op.getText().toString());
+                    operadora.put("nombre", nombres.getText().toString());
+                    operadora.put("apellidos",apellidos.getText().toString());
+                    operadora.put("estado","Activo");
+                    operadora.put("tipo_operadora","admin");
+                    operadora.put("contrasena",pass.getText().toString());
+                } catch (JSONException ex) {
+                    ex.printStackTrace();
+                }
+
+
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url_post, operadora, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Toast.makeText(getContext(), "Regitro existoso", Toast.LENGTH_SHORT).show();
+                        Log.d("Kek", ""+response);
+                        nombres.setText("");
+                        num_op.setText("");
+                        apellidos.setText("");
+                        pass.setText("");
+
+                    }
+                },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(getContext(), "Regitro fallido", Toast.LENGTH_SHORT).show();
+                                Log.d("error", ""+error);
+                            }
+                        }
+                );
+
+                jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                request.add(jsonObjectRequest);
+            }
+        });
+        limpiar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                nombres.setText("");
+                num_op.setText("");
+                apellidos.setText("");
+                pass.setText("");
+            }
+        });
 
 
         return v;

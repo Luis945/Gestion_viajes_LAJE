@@ -58,8 +58,7 @@
                 android:layout_centerInParent="true"
                 android:layout_width="350dp"
                 android:layout_height="50dp"
-                android:hint="Ingresa el nombre"
-                android:textColorHint="@color/negro"
+                android:shadowColor="@color/negro"
                 android:id="@+id/txt_nombre"
                 />
 

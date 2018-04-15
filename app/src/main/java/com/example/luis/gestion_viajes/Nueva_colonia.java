@@ -109,7 +109,7 @@ public class Nueva_colonia extends Fragment {
                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url_post, colonia, new Response.Listener<JSONObject>() {
                    @Override
                    public void onResponse(JSONObject response) {
-                       Toast.makeText(getContext(), "regitro existoso", Toast.LENGTH_SHORT).show();
+                       Toast.makeText(getContext(), "Regitro existoso", Toast.LENGTH_SHORT).show();
                         Log.d("Kek", ""+response);
                         nombre.setText("");
 
@@ -118,7 +118,7 @@ public class Nueva_colonia extends Fragment {
                        new Response.ErrorListener() {
                            @Override
                            public void onErrorResponse(VolleyError error) {
-                               Toast.makeText(getContext(), "regitro fallido", Toast.LENGTH_SHORT).show();
+                               Toast.makeText(getContext(), "Regitro fallido", Toast.LENGTH_SHORT).show();
                                Log.d("error", ""+error);
                            }
                        }

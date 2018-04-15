@@ -3,6 +3,7 @@ package com.example.luis.gestion_viajes;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -42,7 +44,7 @@ import java.util.List;
  * Use the {@link ver_unidades#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ver_unidades extends Fragment implements Response.ErrorListener,Response.Listener<String>,View.OnClickListener,Nueva_unidad.OnFragmentInteractionListener {
+public class ver_unidades extends Fragment implements Response.ErrorListener,Response.Listener<String>{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
@@ -56,8 +58,10 @@ public class ver_unidades extends Fragment implements Response.ErrorListener,Res
     private OnFragmentInteractionListener mListener;
 
     ArrayList<Unidad> listaunidades;
-    ImageView imagen;
+    ProgressBar cargando;
+    Handler handler = new Handler();
     RecyclerView reciclador;
+    int contadorcargando=0;
     final String URL_GET = "http://rtaxis.uttsistemas.com/verunidades";
     public ver_unidades() {
         // Required empty public constructor
@@ -97,13 +101,33 @@ public class ver_unidades extends Fragment implements Response.ErrorListener,Res
        View v= inflater.inflate(R.layout.fragment_ver_unidades, container, false);
        listaunidades= new ArrayList<>();
        reciclador=(RecyclerView) v.findViewById(R.id.reciclador);
-       imagen=(ImageView)v.findViewById(R.id.mas);
-       imagen.setOnClickListener(this);
+       cargando=(ProgressBar)v.findViewById(R.id.barrawait);
+
+
+
         reciclador.setLayoutManager(new GridLayoutManager(getContext(),2));
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_GET, this, this);
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(6000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         Volley.newRequestQueue(getContext()).add(stringRequest);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(contadorcargando<100)
+                {
+                    contadorcargando++;
+                    android.os.SystemClock.sleep(120);
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                        cargando.setProgress(contadorcargando);
+
+                        }
+                    });
+                }
+            }
+        }).start();
 
 
 
@@ -142,6 +166,14 @@ public class ver_unidades extends Fragment implements Response.ErrorListener,Res
 
     @Override
     public void onResponse(String response) {
+
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                cargando.setVisibility(View.GONE);
+            }
+        });
+
         try {
             JSONArray array = new JSONArray(response);
             for (int i = 0; i < array.length(); i++) {
@@ -162,23 +194,9 @@ public class ver_unidades extends Fragment implements Response.ErrorListener,Res
         }
     }
 
-    @Override
-    public void onClick(View view) {
-        Toast.makeText(getContext(), "smn", Toast.LENGTH_SHORT).show();
-        //android.support.v4.app.Fragment fragment=null;
-        //boolean fragmenttransaction=false;
-        //if ( R.id.nuevaunidad==1) {
-          //  fragment = new Nueva_unidad();
-            //fragmenttransaction = true;
-        //}
 
 
-    }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 
     /**
      * This interface must be implemented by activities that contain this

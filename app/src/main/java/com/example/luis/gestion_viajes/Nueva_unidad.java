@@ -105,7 +105,7 @@ public class Nueva_unidad extends Fragment {
                 JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url_post, unidad, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(getContext(), "regitro existoso", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Regitro existoso", Toast.LENGTH_SHORT).show();
                         Log.d("Kek", ""+response);
                         numero_unidad.setText("");
 
@@ -114,7 +114,7 @@ public class Nueva_unidad extends Fragment {
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(getContext(), "regitro fallido", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Regitro fallido", Toast.LENGTH_SHORT).show();
                                 Log.d("error", ""+error);
                             }
                         }

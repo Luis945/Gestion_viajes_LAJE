@@ -4,11 +4,25 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 /**
@@ -52,7 +66,11 @@ public class nueva_Basee extends Fragment{
         fragment.setArguments(args);
         return fragment;
     }
-Spinner combotipo;
+    Spinner combotipo;
+    Button registrar,limpiar;
+    EditText nombre,direccion;
+    String url_post = "http://rtaxis.uttsistemas.com/nuevabase";
+    RequestQueue request;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,9 +87,59 @@ Spinner combotipo;
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_nueva__basee, container, false);
         combotipo=v.findViewById(R.id.combotipobase);
-
+        nombre=(EditText)v.findViewById(R.id.txt_nombre);
+        direccion=(EditText)v.findViewById(R.id.txt_direccion);
+        registrar=(Button)v.findViewById(R.id.registrar);
+        limpiar=(Button)v.findViewById(R.id.limpiar);
         String [] opc = {"Base","Sub-Base"};
         combotipo.setAdapter(new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_dropdown_item,opc));
+
+        request = Singleton.getInstance(getContext()).getRequestQueue();
+        registrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                JSONObject base = new JSONObject();
+                try {
+                    base.put("nombre",nombre.getText().toString());
+                    base.put("direccion",direccion.getText().toString());
+                    base.put("tipo",combotipo.getSelectedItem().toString());
+                } catch (JSONException ex) {
+                    ex.printStackTrace();
+                }
+
+
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url_post, base , new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Toast.makeText(getContext(), "Regitro existoso", Toast.LENGTH_SHORT).show();
+                        Log.d("Kek", ""+response);
+                        nombre.setText("");
+                        direccion.setText("");
+
+
+                    }
+                },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(getContext(), "Regitro fallido", Toast.LENGTH_SHORT).show();
+                                Log.d("error", ""+error);
+                            }
+                        }
+                );
+
+                jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                request.add(jsonObjectRequest);
+            }
+        });
+        limpiar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nombre.setText("");
+                direccion.setText("");
+
+            }
+        });
         return v;
     }
 
