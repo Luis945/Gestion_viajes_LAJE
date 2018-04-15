@@ -51,9 +51,11 @@ public class coloniasadaptador extends RecyclerView.Adapter<coloniasadaptador.Da
 
         @Override
         public void onClick(View view) {
-            Toast.makeText(context, "¡Elemento Seleccionado!", Toast.LENGTH_SHORT).show();
+
         }
     }
+
+    /*----------------------------AQUÍ ACABA---------------------------*/
 
 
     @Override

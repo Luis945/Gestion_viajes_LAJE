@@ -39,7 +39,9 @@ import java.util.ArrayList;
 
 
 //-----------------------HAY QUE IMPLEMENTAR PRIMERO-------------------------//
-public class ver_colonias extends Fragment implements Response.ErrorListener,Response.Listener<String>,View.OnClickListener,Nueva_colonia.OnFragmentInteractionListener{
+public class ver_colonias extends Fragment implements Response.ErrorListener,Response.Listener<String>,
+        View.OnClickListener,Nueva_colonia.OnFragmentInteractionListener{
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -107,7 +109,6 @@ public class ver_colonias extends Fragment implements Response.ErrorListener,Res
 
     @Override
     public void onClick(View view) {
-        Toast.makeText(getContext(), "PICAO", Toast.LENGTH_SHORT).show();
 
     }
 
