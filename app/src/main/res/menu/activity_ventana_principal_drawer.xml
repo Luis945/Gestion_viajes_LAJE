@@ -11,15 +11,15 @@
         </item>
         <item
             android:id="@+id/nuevabase"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/base"
             android:title="Nueva Base" />
         <item
             android:id="@+id/nuevooperador"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/operador"
             android:title="Nuevo operador" />
         <item
             android:id="@+id/nuevacolonia"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/colonia"
             android:title="Nueva colonia" />
         <item
             android:id="@+id/nuevaunidad"
@@ -32,18 +32,20 @@
 
             <item
                 android:id="@+id/verviaje"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/verviajes"
                 android:title="Ver viajes totales" />
             <item
                 android:id="@+id/vercliente"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/usuario"
                 android:title="Ver clientes" />
             <item
                 android:title="Ver Operadoras"
-                android:id="@+id/veroperadora" />
+                android:id="@+id/veroperadora"
+                android:icon="@drawable/operador"/>
             <item
                 android:id="@+id/vercolonia"
-                android:title="Ver Colonias" />
+                android:title="Ver Colonias"
+                android:icon="@drawable/colonia"/>
 
             <item
                 android:id="@+id/verunidades"
