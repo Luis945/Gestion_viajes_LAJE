@@ -24,7 +24,7 @@
         <item
             android:id="@+id/nuevaunidad"
             android:icon="@drawable/taxigrande"
-            android:title="nueva unidad" />
+            android:title="Nueva unidad" />
     </group>
 
     <item android:title="Ver">
