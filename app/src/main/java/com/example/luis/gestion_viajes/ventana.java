@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -16,7 +15,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.luis.gestion_viajes.adaptadores.viajesAdapter;
@@ -80,7 +78,7 @@ public class ventana extends Fragment implements Response.Listener<String>,Respo
         }
     }
 
-    ListView listView;
+
     ArrayList<Viaje> viajes= new ArrayList<>();
     String url="http://rtaxis.uttsistemas.com/verviajes";
 
@@ -90,7 +88,6 @@ public class ventana extends Fragment implements Response.Listener<String>,Respo
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_ventana, container, false);
 
-        listView= (ListView) view.findViewById(R.id.listaViajes);
 
 
     cargarViajes();
@@ -158,8 +155,6 @@ public class ventana extends Fragment implements Response.Listener<String>,Respo
                 ));
             }
             viajesAdapter viajesAdapter= new viajesAdapter(viajes,getContext());
-            listView.setAdapter(viajesAdapter);
-            listView.invalidateViews();
 
 
         }catch (JSONException e){
