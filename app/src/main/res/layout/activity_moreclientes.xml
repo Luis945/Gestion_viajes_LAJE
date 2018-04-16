@@ -5,62 +5,73 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".moreclientesActivity"
-    android:background="#fffd58"
+    android:background="#f2fdde51"
     >
 
     <LinearLayout
-        android:id="@+id/lin1"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@drawable/sombra"
-        android:backgroundTint="#d0ffffff"
-        android:layout_margin="10dp"
+        android:backgroundTint="@color/blanco"
+        android:layout_margin="20dp"
         >
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/update"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="20dp"
-                android:background="@drawable/edit"
-                android:layout_alignParentRight="true"
-                />
-            <TextView
-                android:id="@+id/telefono_settext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:textSize="40dp"
-                android:textStyle="bold"
-                android:fontFamily="@font/montserrat"
-                android:layout_margin="15dp"
-                />
-        </RelativeLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@id/lin1"
-        >
-
 
         <LinearLayout
-            android:id="@+id/lin2"
+            android:id="@+id/lin1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            android:layout_margin="20dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/update"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/edit"
+                    android:layout_alignParentRight="true"
+                    />
+                <TextView
+                    android:id="@+id/telefono_settext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:textSize="40dp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat"
+                    android:layout_margin="15dp"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sec1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_below="@id/lin1"
-            android:background="@drawable/sombra"
-            android:backgroundTint="#60747373"
-            android:layout_margin="30dp"
+            android:background="#fbdf5a"
             >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Detalles Cliente"
+                android:layout_margin="5dp"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/blanco"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <TextView
                 android:layout_margin="10dp"
@@ -118,19 +129,32 @@
                 android:textSize="15dp"
                 android:textStyle="italic"
                 android:textColor="#e10537ff"/>
+        </LinearLayout>
 
+
+
+        <LinearLayout
+            android:id="@+id/sec2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fbdf5a"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Extras"
+                android:layout_margin="5dp"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/blanco"
+                />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/lin3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_below="@id/lin2"
-            android:background="@drawable/sombra"
-            android:backgroundTint="#33818181"
-            android:layout_margin="30dp"
-            >
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/nota"

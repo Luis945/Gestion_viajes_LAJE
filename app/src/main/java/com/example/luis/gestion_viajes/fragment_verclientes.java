@@ -3,6 +3,7 @@ package com.example.luis.gestion_viajes;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -56,7 +58,13 @@ public class fragment_verclientes extends Fragment implements
 
     public static ArrayList<Cliente> clienteArrayList;
     RecyclerView recyclerView;
+
     public static Cliente cl;
+
+    ProgressBar cargando;
+    Handler handler = new Handler();
+    int contadorcargando=0;
+
     final String URL_GET = "http://rtaxis.uttsistemas.com/verclientes";
 
 
@@ -99,6 +107,7 @@ public class fragment_verclientes extends Fragment implements
         View view =inflater.inflate(R.layout.fragment_fragment_verclientes, container, false);
         clienteArrayList=new ArrayList<>();
         recyclerView=(RecyclerView)view.findViewById(R.id.reciclador);
+        cargando=(ProgressBar)view.findViewById(R.id.barrawait);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -107,6 +116,25 @@ public class fragment_verclientes extends Fragment implements
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         Volley.newRequestQueue(getContext()).add(stringRequest);
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(contadorcargando<100)
+                {
+                    contadorcargando++;
+                    android.os.SystemClock.sleep(120);
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            cargando.setProgress(contadorcargando);
+
+                        }
+                    });
+                }
+            }
+        }).start();
 
         return view;
 
@@ -140,10 +168,18 @@ public class fragment_verclientes extends Fragment implements
     @Override
     public void onErrorResponse(VolleyError error) {
 
+
     }
 
     @Override
     public void onResponse(String response) {
+
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                cargando.setVisibility(View.GONE);
+            }
+        });
 
         try {
             JSONArray jsonArray=new JSONArray(response);

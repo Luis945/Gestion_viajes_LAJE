@@ -43,7 +43,7 @@
             android:id="@+id/telefonoclientes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="italic"
+            android:textStyle="bold"
             android:textSize="20dp"
             android:text="telefono"
             android:fontFamily="@font/montserrat"

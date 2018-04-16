@@ -22,9 +22,9 @@ public class moreclientesActivity extends AppCompatActivity {
 
 
         txttel.setText(VerclientesAdapter.cliente.getTelefono());
-        txtdireccion.setText(VerclientesAdapter.cliente.getDireccion());
-        txtentre.setText(VerclientesAdapter.cliente.getEntre_1()+" y "+VerclientesAdapter.cliente.getEntre_2());
-        txtcolonia.setText(VerclientesAdapter.cliente.getColonia());
-        txtnota.setText(VerclientesAdapter.cliente.getNota());
+        txtdireccion.setText(VerclientesAdapter.cliente.getDireccion().toUpperCase());
+        txtentre.setText(VerclientesAdapter.cliente.getEntre_1().toUpperCase()+" y "+VerclientesAdapter.cliente.getEntre_2().toUpperCase());
+        txtcolonia.setText(VerclientesAdapter.cliente.getColonia().toUpperCase());
+        txtnota.setText(VerclientesAdapter.cliente.getNota().toUpperCase());
     }
 }
