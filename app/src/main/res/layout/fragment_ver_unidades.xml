@@ -33,15 +33,11 @@
         android:layout_marginTop="69dp">
 
     </android.support.v7.widget.RecyclerView>
+
     <ProgressBar
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/barrawait"
-       android:layout_marginTop="90dp"
-        android:layout_marginLeft="25dp"
-
-
-
-
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
         />
 </FrameLayout>

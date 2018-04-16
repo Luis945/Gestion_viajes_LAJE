@@ -56,7 +56,7 @@
             android:layout_height="70dp">
             <EditText
                 android:layout_centerInParent="true"
-                android:layout_width="350dp"
+                android:layout_width="340dp"
                 android:layout_height="50dp"
                 android:shadowColor="@color/negro"
                 android:id="@+id/txt_nombre"
