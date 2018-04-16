@@ -1,10 +1,10 @@
 package com.example.luis.gestion_viajes.adaptadores;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.luis.gestion_viajes.R;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * Created by luis on 09/04/18.
  */
 
-public class viajesAdapter extends BaseAdapter {
+public class viajesAdapter extends RecyclerView.Adapter<viajesAdapter.datosHolder> {
 
     ArrayList<Viaje> viajes ;
     Context context;
@@ -28,36 +28,47 @@ public class viajesAdapter extends BaseAdapter {
     }
 
     @Override
-    public int getCount() {
+    public viajesAdapter.datosHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        LayoutInflater inflater= LayoutInflater.from(context);
+        View vista= inflater.inflate(R.layout.viaje_mandado,null);
+        return new datosHolder(vista);
+
+    }
+
+    @Override
+    public void onBindViewHolder(viajesAdapter.datosHolder holder, int position) {
+     Viaje viaje= viajes.get(position);
+    holder.textView1.setText(viaje.getFecha());
+    holder.textView2.setText(viaje.getDireccion());
+    holder.textView3.setText(viaje.getColonia());
+    holder.textView4.setText(viaje.getUnidad());
+    holder.textView5.setText(viaje.getOperadora());
+
+    }
+
+    @Override
+    public int getItemCount() {
         return viajes.size();
     }
 
-    @Override
-    public Object getItem(int position) {
-        return viajes.get(position);
+    class datosHolder extends RecyclerView.ViewHolder{
+        TextView
+                textView1,
+                textView2,
+                textView3,
+                textView4,
+                textView5;
+
+        public datosHolder(View view){
+            super(view);
+            textView1= view.findViewById(R.id.fecha_lbl);
+            textView2= view.findViewById(R.id.direccion_lbl);
+            textView3= view.findViewById(R.id.colonia_lbl);
+            textView4= view.findViewById(R.id.unidad_lbl);
+            textView5= view.findViewById(R.id.operadora_lbl);
+        }
+
     }
 
-    @Override
-    public long getItemId(int position) {
-        return viajes.get(position).getOperadora();
-    }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        Viaje viaje= viajes.get(position);
-        View v= convertView;
-        v= LayoutInflater.from(context).inflate(R.layout.viaje_mandado,null);
-        TextView fecha, telefono, direccion, unidad,operadora;
-        fecha= (TextView) v.findViewById(R.id.lbl_fecha);
-        telefono=(TextView) v.findViewById(R.id.lbl_teléfono);
-        direccion=(TextView) v.findViewById(R.id.lbl_direccion);
-        unidad=(TextView) v.findViewById(R.id.lbl_unidad);
-        operadora= (TextView) v.findViewById(R.id.lbl_operadora);
-        fecha.setText(viaje.getFecha());
-        telefono.setText(viaje.getTelefono());
-        direccion.setText(viaje.getDireccion());
-        unidad.setText(viaje.getUnidad());
-        operadora.setText(viaje.getOperadora());
-        return v;
-    }
 }

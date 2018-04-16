@@ -17,17 +17,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Viajes Mandados"
+            android:textSize="30sp"
             android:textAlignment="center"
             />
-        <ListView
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/reciclado_viaje"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/listaViajes"
-            tools:listitem="@layout/viaje_mandado"
-            android:background="#ffff"
-            android:layout_margin="5dp">
+            android:layout_marginTop="20dp">
 
-        </ListView>
+        </android.support.v7.widget.RecyclerView>
 
     </LinearLayout>
 
