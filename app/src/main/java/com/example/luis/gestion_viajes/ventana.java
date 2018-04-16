@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -87,6 +88,9 @@ public class ventana extends Fragment implements Response.Listener<String>,Respo
     List<Viaje> viajes= new ArrayList<>();
     String url="http://rtaxis.uttsistemas.com/verviajes";
     SwipeRefreshLayout refreshLayout;
+    ProgressBar progressBar;
+    Handler handler = new Handler();
+    int contadorcargando=0;
     RequestQueue queue;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -94,6 +98,7 @@ public class ventana extends Fragment implements Response.Listener<String>,Respo
         View view= inflater.inflate(R.layout.fragment_ventana, container, false);
     recyclerView= view.findViewById(R.id.reciclado_viaje);
     refreshLayout=(SwipeRefreshLayout) view.findViewById(R.id.actualizar);
+    progressBar= (ProgressBar) view.findViewById(R.id.cargando);
 
         refreshLayout.setOnRefreshListener(this);
         refreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
@@ -118,6 +123,24 @@ public class ventana extends Fragment implements Response.Listener<String>,Respo
             }
         });
         cargarViajes();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(contadorcargando<100)
+                {
+                    contadorcargando++;
+                    android.os.SystemClock.sleep(120);
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressBar.setProgress(contadorcargando);
+
+                        }
+                    });
+                }
+            }
+        }).start();
+
 
 
         return view;
@@ -166,6 +189,12 @@ public class ventana extends Fragment implements Response.Listener<String>,Respo
     public void onResponse(String response) {
         Log.d("ejemplo", ""+response.toString());
 
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                progressBar.setVisibility(View.GONE);
+            }
+        });
         try{
             viajes.clear();
 
@@ -212,7 +241,7 @@ public class ventana extends Fragment implements Response.Listener<String>,Respo
                 Toast.makeText(getContext(), "Actualizando...", Toast.LENGTH_SHORT).show();
 
             }
-        }, 8000);
+        }, 10000);
 
     }
 
