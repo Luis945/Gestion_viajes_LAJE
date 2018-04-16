@@ -55,7 +55,7 @@ public class ver_colonias extends Fragment implements Response.ErrorListener,Res
 
 
     //LA LISTA AQUÍ SE LLENA
-    ArrayList<Colonia> listacolonias;
+    public static ArrayList<Colonia> listacolonias;
     RecyclerView reciclador;
     final String URL="http://rtaxis.uttsistemas.com/vercolonias";
 

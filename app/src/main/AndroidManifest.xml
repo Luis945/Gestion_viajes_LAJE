@@ -31,7 +31,8 @@
         <activity android:name=".modificarclientes" />
         <activity android:name=".modificarunidades" />
         <activity android:name=".modificaroperadores" />
-        <activity android:name=".moreclientesActivity"></activity>
+        <activity android:name=".moreclientesActivity" />
+        <activity android:name=".modificarcolonias"></activity>
     </application>
 
 </manifest>

@@ -1,45 +1,50 @@
 package com.example.luis.gestion_viajes.adaptadores;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.luis.gestion_viajes.R;
 import com.example.luis.gestion_viajes.objetos.Colonia;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class coloniasadaptador extends RecyclerView.Adapter<coloniasadaptador.DatosViewHolder> {
 
 
     //REQUERIMOS EL CONTEXTO DE LA APLICACIÓN Y LA LISTA QUE SE UTILIZARÁ PARA LLENAR
     public Context contexto;
-    public List<Colonia> listacolonias;
+    public ArrayList<Colonia> listacolonias;
 
-    public coloniasadaptador(Context context, List<Colonia> listacolonias){
+    public coloniasadaptador(Context context, ArrayList<Colonia> listacolonias){
         this.contexto=context;
         this.listacolonias=listacolonias;
     }
 
+   /*  implements modificarcolonias.OnFragmentInteractionListener
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+                PARA QUE JALE UN FRAGMENT HAY QUE PONER TODO ESTE CÓDIGO
+    }*/
+
     //-----------------------------------AQUÍ ES OTRA CLASE----------//
     /*todo eso lo hice primero*/
-    public static class DatosViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public  class DatosViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView nomcolonia; //txtview del item
         List<Colonia> listacolonias = new ArrayList<Colonia>();
         Context context; //contexto de la app
+        private int posicion;
+        //android.support.v4.app.Fragment f = new modificarcolonias();
 
 
         public DatosViewHolder(View itemView,Context context,List<Colonia> listacolonias) {
             super(itemView);
-
 
             //setear valores
             this.listacolonias=listacolonias;
@@ -52,6 +57,11 @@ public class coloniasadaptador extends RecyclerView.Adapter<coloniasadaptador.Da
         @Override
         public void onClick(View view) {
 
+            int posicion=getAdapterPosition();
+            Colonia col = this.listacolonias.get(posicion);
+            /*ESTA COSA NO LA VOY A UTILIZAR PERO SIRVE PARA ABRIR OTRO FRAGMENT*/
+            //((ventana_principal)context).getSupportFragmentManager().beginTransaction().replace(R.id.cambio,f).commit();
+            Toast.makeText(context, ""+col.getNombre().toString(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -71,7 +81,6 @@ public class coloniasadaptador extends RecyclerView.Adapter<coloniasadaptador.Da
     public void onBindViewHolder(coloniasadaptador.DatosViewHolder holder, int position) {
         Colonia colonia = listacolonias.get(position);
         holder.nomcolonia.setText("Nombre: "+colonia.getNombre());
-
     }
 
     @Override
