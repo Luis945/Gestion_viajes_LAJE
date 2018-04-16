@@ -2,7 +2,8 @@
 <resources>
     <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#999999</color>
-    <color name="colorAccent">#ffb940</color>
+    <color name="colorAccent">#000</color>
+
     <color name="amarillo">#fcdd37</color>
     <color name="amarillobarra">#ecd017</color>
     <color name="blanco">#fff</color>
