@@ -12,13 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ventana_principal"
             android:label="@string/title_activity_ventana_principal"
             android:theme="@style/AppTheme" />
-        <activity android:name=".iniciosesion" android:screenOrientation="portrait" />
+        <activity android:name=".iniciosesion" />
 
         <meta-data
             android:name="preloaded_fonts"
@@ -28,15 +32,7 @@
         <activity android:name=".modificarunidades" />
         <activity android:name=".modificaroperadores" />
         <activity android:name=".moreclientesActivity" />
-        <activity android:name=".splashscreen"
-            android:noHistory="true" android:screenOrientation="portrait">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".modificarcolonias"></activity>
     </application>
 
 </manifest>

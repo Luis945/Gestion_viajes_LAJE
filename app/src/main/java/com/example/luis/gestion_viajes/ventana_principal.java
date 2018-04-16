@@ -27,7 +27,6 @@ public class ventana_principal extends AppCompatActivity
         ver_colonias.OnFragmentInteractionListener,
         fragment_verclientes.OnFragmentInteractionListener
 
-
 {
     private NavigationView navview;
     @Override
@@ -38,7 +37,6 @@ public class ventana_principal extends AppCompatActivity
         setSupportActionBar(toolbar);
         navview = (NavigationView) findViewById(R.id.nav_view);
         navview.setNavigationItemSelectedListener(this);
-
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
