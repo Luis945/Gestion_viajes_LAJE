@@ -12,11 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ventana_principal"
@@ -32,7 +28,15 @@
         <activity android:name=".modificarunidades" />
         <activity android:name=".modificaroperadores" />
         <activity android:name=".moreclientesActivity" />
-        <activity android:name=".modificarcolonias"></activity>
+        <activity android:name=".splashscreen"
+            android:noHistory="true" android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
