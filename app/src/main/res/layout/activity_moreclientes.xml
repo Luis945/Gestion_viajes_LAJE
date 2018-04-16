@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".moreclientesActivity"
+    android:background="#fffd58"
+    >
+
+    <LinearLayout
+        android:id="@+id/lin1"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical"
+        android:background="@drawable/sombra"
+        android:backgroundTint="#d0ffffff"
+        android:layout_margin="10dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/update"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/edit"
+                android:layout_alignParentRight="true"
+                />
+            <TextView
+                android:id="@+id/telefono_settext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:textSize="40dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/montserrat"
+                android:layout_margin="15dp"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/lin1"
+        >
+
+
+        <LinearLayout
+            android:id="@+id/lin2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/lin1"
+            android:background="@drawable/sombra"
+            android:backgroundTint="#60747373"
+            android:layout_margin="30dp"
+            >
+
+            <TextView
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Direccion: "
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/montserrat"
+                />
+            <TextView
+                android:id="@+id/direccion_settext"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textStyle="italic"
+                android:textColor="#e10537ff"
+                />
+
+            <TextView
+                android:id="@+id/entre1"
+                android:text="Entre calles:"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/montserrat"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/entre1_settext"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textStyle="italic"
+                android:textColor="#e10537ff"/>
+
+            <TextView
+                android:id="@+id/colonia"
+                android:text="Colonia: "
+                android:textSize="20dp"
+                android:fontFamily="@font/montserrat"
+                android:textStyle="bold"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/colonia_settext"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textStyle="italic"
+                android:textColor="#e10537ff"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/lin2"
+            android:background="@drawable/sombra"
+            android:backgroundTint="#33818181"
+            android:layout_margin="30dp"
+            >
+
+            <TextView
+                android:id="@+id/nota"
+                android:text="Nota: "
+                android:textSize="20dp"
+                android:fontFamily="@font/montserrat"
+                android:textStyle="bold"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/nota_settext"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textStyle="italic"
+                android:textColor="#e1ff0905"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

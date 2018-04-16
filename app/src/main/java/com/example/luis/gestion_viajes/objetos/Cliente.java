@@ -5,20 +5,18 @@ package com.example.luis.gestion_viajes.objetos;
  */
 
 public class Cliente {
-    String Telefono,Nombre,Direccion,Entre_1,Entre_2,Nota;
-    int Colonia;
+    String Telefono,Nombre,Direccion,Entre_1,Entre_2,Nota,Colonia;
 
-    public Cliente(String telefono, String nombre, String direccion, String entre_1, String entre_2, int colonia) {
-        Telefono = telefono;
-        Nombre = nombre;
-        Direccion = direccion;
-        Entre_1 = entre_1;
-        Entre_2 = entre_2;
-        Colonia = colonia;
 
-    }
 
-    public Cliente(String telefono, String nombre, String direccion, String entre_1, String entre_2, String nota, int colonia) {
+    public Cliente(String nombre,
+                   String telefono,
+                   String direccion,
+                   String entre_1,
+                   String entre_2,
+                   String colonia,
+                   String nota) {
+
         Telefono = telefono;
         Nombre = nombre;
         Direccion = direccion;
@@ -28,9 +26,13 @@ public class Cliente {
         Colonia = colonia;
     }
 
+
+
     public Cliente() {
 
     }
+
+
 
     public String getNota() {
         return Nota;
@@ -80,11 +82,11 @@ public class Cliente {
         Entre_2 = entre_2;
     }
 
-    public int getColonia() {
+    public String getColonia() {
         return Colonia;
     }
 
-    public void setColonia(int colonia) {
+    public void setColonia(String colonia) {
         Colonia = colonia;
     }
 }
