@@ -50,7 +50,8 @@
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="230dp"
-                android:id="@+id/txt_num_op"/>
+                android:id="@+id/txt_num_op"
+                android:inputType="number" />
 
         </RelativeLayout>
         <RelativeLayout
