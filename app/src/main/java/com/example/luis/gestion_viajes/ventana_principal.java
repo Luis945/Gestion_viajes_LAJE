@@ -17,10 +17,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class ventana_principal extends AppCompatActivity
-        implements OnNavigationItemSelectedListener,nueva_Basee.OnFragmentInteractionListener,
-        Nueva_colonia.OnFragmentInteractionListener,Nueva_unidad.OnFragmentInteractionListener,Nuevo_operador.OnFragmentInteractionListener,
-        ventana.OnFragmentInteractionListener,ver_unidades.OnFragmentInteractionListener, ver_colonias.OnFragmentInteractionListener
-
+        implements OnNavigationItemSelectedListener,
+        nueva_Basee.OnFragmentInteractionListener,
+        Nueva_colonia.OnFragmentInteractionListener,
+        Nueva_unidad.OnFragmentInteractionListener,
+        Nuevo_operador.OnFragmentInteractionListener,
+        ventana.OnFragmentInteractionListener,
+        ver_unidades.OnFragmentInteractionListener,
+        ver_colonias.OnFragmentInteractionListener,
+        fragment_verclientes.OnFragmentInteractionListener,
+        veroperadoras.OnFragmentInteractionListener
 
 {
     private NavigationView navview;
@@ -32,7 +38,6 @@ public class ventana_principal extends AppCompatActivity
         setSupportActionBar(toolbar);
         navview = (NavigationView) findViewById(R.id.nav_view);
         navview.setNavigationItemSelectedListener(this);
-
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -114,6 +119,8 @@ public class ventana_principal extends AppCompatActivity
 
         } else if (id == R.id.vercliente) {
 
+            fragment=new fragment_verclientes();
+            fragmenttransaction=true;
         }
         else if (id==R.id.verunidades)
         {

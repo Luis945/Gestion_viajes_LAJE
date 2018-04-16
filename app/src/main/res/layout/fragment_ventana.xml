@@ -20,16 +20,31 @@
             android:textSize="30sp"
             android:textAlignment="center"
             />
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/reciclado_viaje"
+
+        <android.support.v4.widget.SwipeRefreshLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp">
+            android:id="@+id/actualizar"
+            tools:ignore="MergeRootFrame"
+            >
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/reciclado_viaje"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp">
 
-        </android.support.v7.widget.RecyclerView>
+            </android.support.v7.widget.RecyclerView>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
 
     </LinearLayout>
-
+    <ProgressBar
+        android:id="@+id/cargando"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        />
 
 
 

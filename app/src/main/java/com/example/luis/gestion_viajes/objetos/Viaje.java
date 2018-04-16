@@ -32,10 +32,10 @@ public class Viaje {
         this.colonia = colonia;
     }
 
-    public Viaje(int unidad, int operadora, String telefono, String direccion, String fecha) {
+    public Viaje(int unidad, int operadora, String colonia, String direccion, String fecha) {
         this.unidad = unidad;
         this.operadora = operadora;
-        this.telefono = telefono;
+        this.colonia = colonia;
         this.direccion = direccion;
         this.fecha = fecha;
     }

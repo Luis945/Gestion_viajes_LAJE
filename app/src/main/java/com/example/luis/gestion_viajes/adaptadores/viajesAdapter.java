@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.example.luis.gestion_viajes.R;
 import com.example.luis.gestion_viajes.objetos.Viaje;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by luis on 09/04/18.
@@ -18,10 +18,10 @@ import java.util.ArrayList;
 
 public class viajesAdapter extends RecyclerView.Adapter<viajesAdapter.datosHolder> {
 
-    ArrayList<Viaje> viajes ;
+    List<Viaje> viajes;
     Context context;
 
-    public viajesAdapter(ArrayList<Viaje> viajes, Context context) {
+    public viajesAdapter(List<Viaje> viajes, Context context) {
 
         this.viajes = viajes;
         this.context = context;
@@ -36,13 +36,13 @@ public class viajesAdapter extends RecyclerView.Adapter<viajesAdapter.datosHolde
     }
 
     @Override
-    public void onBindViewHolder(viajesAdapter.datosHolder holder, int position) {
+    public void onBindViewHolder(datosHolder holder, int position) {
      Viaje viaje= viajes.get(position);
     holder.textView1.setText(viaje.getFecha());
     holder.textView2.setText(viaje.getDireccion());
     holder.textView3.setText(viaje.getColonia());
-    holder.textView4.setText(viaje.getUnidad());
-    holder.textView5.setText(viaje.getOperadora());
+    holder.textView4.setText(String.valueOf(viaje.getUnidad()));
+    holder.textView5.setText(String.valueOf(viaje.getOperadora()));
 
     }
 
@@ -52,12 +52,7 @@ public class viajesAdapter extends RecyclerView.Adapter<viajesAdapter.datosHolde
     }
 
     class datosHolder extends RecyclerView.ViewHolder{
-        TextView
-                textView1,
-                textView2,
-                textView3,
-                textView4,
-                textView5;
+        TextView textView1, textView2, textView3, textView4, textView5;
 
         public datosHolder(View view){
             super(view);
