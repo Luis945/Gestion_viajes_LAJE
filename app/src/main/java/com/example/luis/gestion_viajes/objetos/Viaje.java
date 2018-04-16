@@ -6,24 +6,54 @@ package com.example.luis.gestion_viajes.objetos;
 
 public class Viaje {
     int cliente,unidad,operadora;
-    String direccion,entre1,entre2,colonia;
+    String telefono,direccion,entre1,entre2,colonia, fecha;
 
-    public Viaje(int cliente, int unidad, int operadora, String direccion, String entre1, String entre2, String colonia) {
+
+    public Viaje(int cliente, int unidad, int operadora, String telefono, String direccion, String entre1, String entre2, String colonia, String fecha) {
         this.cliente = cliente;
         this.unidad = unidad;
         this.operadora = operadora;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.entre1 = entre1;
+        this.entre2 = entre2;
+        this.colonia = colonia;
+        this.fecha = fecha;
+    }
+
+    public Viaje(int cliente, int unidad, int operadora, String telefono, String direccion, String entre1, String entre2, String colonia) {
+        this.cliente = cliente;
+        this.unidad = unidad;
+        this.operadora = operadora;
+        this.telefono = telefono;
         this.direccion = direccion;
         this.entre1 = entre1;
         this.entre2 = entre2;
         this.colonia = colonia;
     }
 
-    public Viaje(int cliente, int unidad, String direccion, String entre1, String entre2) {
-        this.cliente = cliente;
+    public Viaje(int unidad, int operadora, String telefono, String direccion, String fecha) {
         this.unidad = unidad;
+        this.operadora = operadora;
+        this.telefono = telefono;
         this.direccion = direccion;
-        this.entre1 = entre1;
-        this.entre2 = entre2;
+        this.fecha = fecha;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public int getCliente() {

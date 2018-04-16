@@ -1,7 +1,10 @@
 package com.example.luis.gestion_viajes;
 
+import android.app.Fragment;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView.OnNavigationItemSelectedListener;
 import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -14,23 +17,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class ventana_principal extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements OnNavigationItemSelectedListener,nueva_Basee.OnFragmentInteractionListener,
+        Nueva_colonia.OnFragmentInteractionListener,Nueva_unidad.OnFragmentInteractionListener,Nuevo_operador.OnFragmentInteractionListener,
+        ventana.OnFragmentInteractionListener,ver_unidades.OnFragmentInteractionListener, ver_colonias.OnFragmentInteractionListener
 
+
+{
+    private NavigationView navview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ventana_principal);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        navview = (NavigationView) findViewById(R.id.nav_view);
+        navview.setNavigationItemSelectedListener(this);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -40,6 +43,11 @@ public class ventana_principal extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        android.support.v4.app.Fragment fragment= new ventana();
+        getSupportFragmentManager().beginTransaction().replace(R.id.cambio,fragment).commit();
+        getSupportActionBar().setTitle("ventana");
+
     }
 
     @Override
@@ -80,22 +88,56 @@ public class ventana_principal extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        android.support.v4.app.Fragment fragment=null;
+        boolean fragmenttransaction=false;
 
-        } else if (id == R.id.nav_slideshow) {
+        if (id== R.id.ventana_p) {
+            fragment= new ventana();
+            fragmenttransaction=true;
 
-        } else if (id == R.id.nav_manage) {
+        }else if (id == R.id.nuevabase) {
 
-        } else if (id == R.id.nav_share) {
+            fragment= new nueva_Basee();
+            fragmenttransaction=true;
+        } else if (id == R.id.nuevooperador) {
 
-        } else if (id == R.id.nav_send) {
+            fragment= new Nuevo_operador();
+            fragmenttransaction=true;
+        } else if (id == R.id.nuevacolonia) {
+            fragment= new Nueva_colonia();
+            fragmenttransaction=true;
 
+        } else if (id == R.id.nuevaunidad) {
+            fragment= new Nueva_unidad();
+            fragmenttransaction=true;
+        } else if (id == R.id.verviaje) {
+
+        } else if (id == R.id.vercliente) {
+
+        }
+        else if (id==R.id.verunidades)
+        {
+            fragment= new ver_unidades();
+            fragmenttransaction=true;
+        }
+        else if(id==R.id.vercolonia){
+            fragment = new ver_colonias();
+            fragmenttransaction=true;
+        }
+
+        if (fragmenttransaction)
+        {
+            getSupportFragmentManager().beginTransaction().replace(R.id.cambio,fragment).commit();
+            getSupportActionBar().setTitle(item.getTitle());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
