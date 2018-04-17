@@ -139,6 +139,7 @@
 
     </RelativeLayout>
     <ProgressBar
+        android:layout_marginTop="70dp"
         android:id="@+id/barrawait"
         android:layout_width="100dp"
         android:layout_height="100dp"
