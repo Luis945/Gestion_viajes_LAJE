@@ -54,15 +54,22 @@
 
             </LinearLayout>
         </LinearLayout>
-      <ListView
+       <android.support.v4.widget.SwipeRefreshLayout
+
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:id="@+id/actualizarVT"
+           android:layout_weight="1"
+           tools:ignore="MergeRootFrame"
+           >
+      <android.support.v7.widget.RecyclerView
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          android:layout_margin="5dp"
-          android:id="@+id/lisitemp"
-          tools:listitem="@layout/viaje_total"
-          android:layout_weight="1"
-          android:background="#fff">
-      </ListView>
+          android:id="@+id/verViajesT">
+
+
+      </android.support.v7.widget.RecyclerView>
+       </android.support.v4.widget.SwipeRefreshLayout>
 
    </LinearLayout>
 
