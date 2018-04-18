@@ -51,7 +51,7 @@ public class ventana_principal extends AppCompatActivity
 
         android.support.v4.app.Fragment fragment= new ventana();
         getSupportFragmentManager().beginTransaction().replace(R.id.cambio,fragment).commit();
-        getSupportActionBar().setTitle("ventana");
+        getSupportActionBar().setTitle("Ventana Principal");
 
     }
 
@@ -129,6 +129,10 @@ public class ventana_principal extends AppCompatActivity
         }
         else if(id==R.id.vercolonia){
             fragment = new ver_colonias();
+            fragmenttransaction=true;
+        }
+        else if(id==R.id.veroperadora){
+            fragment = new veroperadoras();
             fragmenttransaction=true;
         }
 
