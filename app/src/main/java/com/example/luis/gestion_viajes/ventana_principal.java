@@ -22,7 +22,8 @@ public class ventana_principal extends AppCompatActivity
         ver_unidades.OnFragmentInteractionListener,
         ver_colonias.OnFragmentInteractionListener,
         fragment_verclientes.OnFragmentInteractionListener,
-        veroperadoras.OnFragmentInteractionListener
+        veroperadoras.OnFragmentInteractionListener,
+        verViajes.OnFragmentInteractionListener
 
 {
     private NavigationView navview;

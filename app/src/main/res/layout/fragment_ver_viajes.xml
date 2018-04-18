@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.luis.gestion_viajes.verViajes">
-
    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent"
@@ -13,7 +12,6 @@
             android:layout_height="match_parent"
             android:layout_weight="4"
             android:orientation="vertical">
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -23,20 +21,17 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
                 <RadioButton
                     android:id="@+id/radio_telefono"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Teléfono" />
-
                 <RadioButton
                     android:id="@+id/radio_unidad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Unidad" />
             </RadioGroup>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -54,11 +49,9 @@
                     android:text="Buscar"
                     android:textAllCaps="false"
                     android:id="@+id/busqueda_btn"/>
-
             </LinearLayout>
         </LinearLayout>
        <android.support.v4.widget.SwipeRefreshLayout
-
            android:layout_width="match_parent"
            android:layout_height="match_parent"
            android:id="@+id/actualizarVT"
@@ -68,14 +61,7 @@
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:id="@+id/verViajesT">
-
-
       </android.support.v7.widget.RecyclerView>
        </android.support.v4.widget.SwipeRefreshLayout>
-
    </LinearLayout>
-
-
-
-
 </FrameLayout>
