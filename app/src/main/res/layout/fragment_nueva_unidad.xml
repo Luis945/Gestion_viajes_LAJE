@@ -73,7 +73,7 @@
             android:layout_height="70dp"
             android:id="@+id/contenedorbotones"
             android:layout_below="@id/contenedor_nombre"
-            android:layout_marginTop="140dp">
+            android:layout_marginTop="150dp">
 
             <Button
                 android:layout_width="120dp"
@@ -102,5 +102,13 @@
 
 
     </RelativeLayout>
+    <ProgressBar
+        android:layout_marginTop="90dp"
+        android:id="@+id/barrawait"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:visibility="invisible"
+        />
 
 </FrameLayout>
