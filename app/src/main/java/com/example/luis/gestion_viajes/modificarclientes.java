@@ -1,5 +1,8 @@
 package com.example.luis.gestion_viajes;
 
+import android.app.FragmentTransaction;
+import android.net.Uri;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,7 +25,7 @@ import org.json.JSONObject;
 
 public class modificarclientes extends AppCompatActivity implements View.OnClickListener,
         Response.ErrorListener,
-        Response.Listener<JSONObject> {
+        Response.Listener<JSONObject> , fragment_verclientes.OnFragmentInteractionListener{
 
     EditText txtnombre,txttelefono,txtdireccion,txtentre1,txtentre2,txtnota;
     Button modcli;
@@ -87,11 +90,20 @@ public class modificarclientes extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onResponse(JSONObject response) {
+
+
         Toast.makeText(this, "¡Registro actualizado!", Toast.LENGTH_SHORT).show();
+
+
+
     }
     @Override
     public void onErrorResponse(VolleyError error) {
         Toast.makeText(this, "¡ERROR, No se pudo actualizar!", Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
 }

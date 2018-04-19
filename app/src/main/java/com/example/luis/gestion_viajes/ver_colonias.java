@@ -3,6 +3,7 @@ package com.example.luis.gestion_viajes;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -58,7 +60,9 @@ public class ver_colonias extends Fragment implements Response.ErrorListener,Res
     public static ArrayList<Colonia> listacolonias;
     RecyclerView reciclador;
     final String URL="http://rtaxis.uttsistemas.com/vercolonias";
-
+    ProgressBar cargando;
+    Handler handler = new Handler();
+    int contadorcargando=0;
     public ver_colonias() {
         // Required empty public constructor
     }
@@ -98,10 +102,30 @@ public class ver_colonias extends Fragment implements Response.ErrorListener,Res
         listacolonias = new ArrayList<>();
         reciclador= (RecyclerView)view.findViewById(R.id.recyclercol);
         reciclador.setLayoutManager(new GridLayoutManager(getContext(),1));
-
+        cargando=(ProgressBar)view.findViewById(R.id.barrawait);
         StringRequest stringRequest = new StringRequest(Request.Method.GET,URL,this,this);
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(6000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         Volley.newRequestQueue(getContext()).add(stringRequest);
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(contadorcargando<100)
+                {
+                    contadorcargando++;
+                    android.os.SystemClock.sleep(120);
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            cargando.setProgress(contadorcargando);
+
+                        }
+                    });
+                }
+            }
+        }).start();
+
         return view;
     }
 
@@ -119,6 +143,12 @@ public class ver_colonias extends Fragment implements Response.ErrorListener,Res
 
     @Override
     public void onResponse(String response) {
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                cargando.setVisibility(View.GONE);
+            }
+        });
         Toast.makeText(getContext(), "¡Conectado en ver colonias!", Toast.LENGTH_SHORT).show();
         try {
             JSONArray array = new JSONArray(response);

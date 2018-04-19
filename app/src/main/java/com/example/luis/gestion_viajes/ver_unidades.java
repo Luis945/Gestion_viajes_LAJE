@@ -60,8 +60,9 @@ public class ver_unidades extends Fragment implements Response.ErrorListener,Res
     public static ArrayList<Unidad> listaunidades;
     ProgressBar cargando;
     Handler handler = new Handler();
-    RecyclerView reciclador;
     int contadorcargando=0;
+    RecyclerView reciclador;
+
     final String URL_GET = "http://rtaxis.uttsistemas.com/verunidades";
     public ver_unidades() {
         // Required empty public constructor
