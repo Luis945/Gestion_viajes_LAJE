@@ -85,6 +85,7 @@ public class modificaroperadores extends AppCompatActivity implements View.OnCli
 
         switch (view.getId()){
             case R.id.btnactualizarop:{
+
                 jsonObject = new JSONObject();
                 try{
                     jsonObject.put("id",id);
@@ -97,7 +98,7 @@ public class modificaroperadores extends AppCompatActivity implements View.OnCli
                 }
                 
                 JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,url,jsonObject,this,this);
-                jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(1000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                 request.add(jsonObjectRequest);
             }break;
         }

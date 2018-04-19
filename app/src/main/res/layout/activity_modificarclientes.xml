@@ -31,43 +31,52 @@
         android:orientation="vertical"
         android:gravity="center">
 
+        <!-- txtnommodcli = TXT NOMBRE MODIFICAR CLIENTE -->
+
         <EditText
+            android:id="@+id/txtnommodcli"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="Nombre"
             />
 
         <EditText
+            android:id="@+id/txttelmodcli"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="Teléfono"
             />
 
         <EditText
+            android:id="@+id/txtdirmodcli"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="Dirección"
             />
 
         <EditText
+            android:id="@+id/txtentre1modcli"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="Entre 1"
             />
 
         <EditText
+            android:id="@+id/txtentre2modcli"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="Entre 2"
             />
 
         <EditText
+            android:id="@+id/txtnotamodcli"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="Nota"
             />
 
         <Button
+            android:id="@+id/btnmodcli"
             android:fontFamily="@font/roboto_light"
             android:textSize="20dp"
             android:layout_marginTop="30dp"

@@ -181,8 +181,10 @@ public class fragment_verclientes extends Fragment implements
             JSONArray jsonArray=new JSONArray(response);
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject cliente = jsonArray.getJSONObject(i);
+                /*AQUÍ SE RECIBEN LOS VALORES DE LA CONSULTA*/
                 clienteArrayList.add(new Cliente(
-                        cliente.getString("nombre"),
+                        cliente.getInt("id"),
+                        cliente.getString("nombre_cliente"),
                         cliente.getString("telefono"),
                         cliente.getString("direccion"),
                         cliente.getString("entre_1"),

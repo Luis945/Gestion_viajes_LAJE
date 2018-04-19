@@ -6,17 +6,11 @@ package com.example.luis.gestion_viajes.objetos;
 
 public class Cliente {
     String Telefono,Nombre,Direccion,Entre_1,Entre_2,Nota,Colonia;
+    int Id;
 
 
-
-    public Cliente(String nombre,
-                   String telefono,
-                   String direccion,
-                   String entre_1,
-                   String entre_2,
-                   String colonia,
-                   String nota) {
-
+    public Cliente(int id, String nombre, String telefono, String direccion, String entre_1, String entre_2, String colonia, String nota) {
+        Id=id;
         Telefono = telefono;
         Nombre = nombre;
         Direccion = direccion;
@@ -32,6 +26,14 @@ public class Cliente {
 
     }
 
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        this.Id = id;
+    }
 
 
     public String getNota() {
