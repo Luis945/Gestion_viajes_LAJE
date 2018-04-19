@@ -89,8 +89,6 @@ public class operadorasadaptador extends RecyclerView.Adapter<operadorasadaptado
             {
 
             }
-
-
         }
     }
 

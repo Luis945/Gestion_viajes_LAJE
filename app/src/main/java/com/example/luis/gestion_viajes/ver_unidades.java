@@ -57,7 +57,7 @@ public class ver_unidades extends Fragment implements Response.ErrorListener,Res
 
     private OnFragmentInteractionListener mListener;
 
-    ArrayList<Unidad> listaunidades;
+    public static ArrayList<Unidad> listaunidades;
     ProgressBar cargando;
     Handler handler = new Handler();
     RecyclerView reciclador;

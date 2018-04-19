@@ -6,6 +6,62 @@
     android:layout_height="match_parent"
     tools:context=".modificarunidades">
 
+    <RelativeLayout
+        android:background="@color/amarillo"
+        android:id="@+id/barra"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/roboto_light"
+            android:text="Modificar Unidades"
+            android:textColor="@color/negro"
+            android:textSize="25dp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/l1"
+        android:layout_below="@id/barra"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- txtnommodcli = TXT NOMBRE MODIFICAR UNIDAD -->
+
+        <EditText
+
+            android:id="@+id/txtidmoduni"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="Registro"
+            />
+
+        <Spinner
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/spinerestadomoduni">
+
+        </Spinner>
+        
+        <Button
+            android:id="@+id/btnmoduni"
+            android:fontFamily="@font/roboto_light"
+            android:textSize="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@color/azul"
+            android:text="Modificar Unidad"
+            android:textColor="@color/blanco"
+            />
+
+    </LinearLayout>
 
 
 </RelativeLayout>
