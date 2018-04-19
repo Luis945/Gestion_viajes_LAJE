@@ -22,6 +22,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <RadioButton
+                    android:id="@+id/radio_todos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Todos"
+                    />
+                <RadioButton
                     android:id="@+id/radio_telefono"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
