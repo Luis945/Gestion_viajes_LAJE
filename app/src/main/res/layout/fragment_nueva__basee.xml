@@ -138,5 +138,13 @@
 
 
     </RelativeLayout>
+    <ProgressBar
+        android:layout_marginTop="87dp"
+        android:id="@+id/barrawait"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:visibility="invisible"
+        />
 
 </FrameLayout>

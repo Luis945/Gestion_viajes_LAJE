@@ -17,6 +17,14 @@ public class Operadora {
         Contraseña = contraseña;
     }
 
+    public Operadora(int id, String nombre, String apellidos, String estado, String tipo_operadora) {
+        Id = id;
+        Nombre = nombre;
+        Apellidos = apellidos;
+        Estado = estado;
+        Tipo_operadora = tipo_operadora;
+    }
+
     public int getId() {
         return Id;
     }

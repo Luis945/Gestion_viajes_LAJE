@@ -3,6 +3,7 @@ package com.example.luis.gestion_viajes;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -46,6 +48,9 @@ public class Nueva_unidad extends Fragment {
     EditText numero_unidad;
     String url_post = "http://rtaxis.uttsistemas.com/nuevaunidad";
     RequestQueue request;
+    ProgressBar cargando;
+    Handler handler = new Handler();
+    int contadorcargando=0;
     public Nueva_unidad() {
         // Required empty public constructor
     }
@@ -85,12 +90,32 @@ public class Nueva_unidad extends Fragment {
         registrar=(Button)v.findViewById(R.id.registrar);
         limpiar=(Button)v.findViewById(R.id.limpiar);
         numero_unidad=(EditText)v.findViewById(R.id.txt_num);
+        cargando=(ProgressBar)v.findViewById(R.id.barrawait);
         final String Activo = "Activo";
 
         request = Singleton.getInstance(getContext()).getRequestQueue();
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                cargando.setVisibility(View.VISIBLE);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        while(contadorcargando<100)
+                        {
+                            contadorcargando++;
+                            android.os.SystemClock.sleep(120);
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    cargando.setProgress(contadorcargando);
+
+                                }
+                            });
+                        }
+                    }
+                }).start();
                 JSONObject unidad = new JSONObject();
                 try {
                     unidad.put("reg", numero_unidad.getText().toString());
@@ -105,6 +130,12 @@ public class Nueva_unidad extends Fragment {
                 JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url_post, unidad, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                cargando.setVisibility(View.GONE);
+                            }
+                        });
                         Toast.makeText(getContext(), "Regitro existoso", Toast.LENGTH_SHORT).show();
                         Log.d("Kek", ""+response);
                         numero_unidad.setText("");
@@ -114,6 +145,12 @@ public class Nueva_unidad extends Fragment {
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
+                                handler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        cargando.setVisibility(View.GONE);
+                                    }
+                                });
                                 Toast.makeText(getContext(), "Regitro fallido", Toast.LENGTH_SHORT).show();
                                 Log.d("error", ""+error);
                             }

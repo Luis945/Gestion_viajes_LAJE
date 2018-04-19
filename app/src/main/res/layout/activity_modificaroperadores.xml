@@ -1,9 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".modificaroperadores">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/amarillo">
+
+        <TextView
+            android:textColor="@color/negro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modificar Operadoras"
+            android:textSize="30dp"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/roboto_light"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:editable="false"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="ID"
+            android:textColor="@color/negro"
+            android:id="@+id/txtidmod"/>
+
+        <EditText
+            android:id="@+id/txtnommod"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="Nombre"
+            android:inputType="textImeMultiLine"
+            android:textColor="@color/negro" />
+
+        <EditText
+            android:id="@+id/txtapellidomod"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Apellido"
+            android:inputType="textImeMultiLine|textPersonName"
+            android:textColor="@color/negro" />
+
+        <Spinner
+            android:layout_marginTop="20dp"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:id="@+id/spinerestado">
+
+        </Spinner>
+
+        <Button
+            android:id="@+id/btnactualizarop"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/azul"
+            android:fontFamily="@font/roboto_light"
+            android:text="Actualizar"
+            android:textColor="@color/blanco"
+            android:textSize="25dp"
+            tools:textAllCaps="false" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

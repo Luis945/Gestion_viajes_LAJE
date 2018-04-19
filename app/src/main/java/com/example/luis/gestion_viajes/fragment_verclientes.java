@@ -5,16 +5,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -185,8 +181,10 @@ public class fragment_verclientes extends Fragment implements
             JSONArray jsonArray=new JSONArray(response);
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject cliente = jsonArray.getJSONObject(i);
+                /*AQUÍ SE RECIBEN LOS VALORES DE LA CONSULTA*/
                 clienteArrayList.add(new Cliente(
-                        cliente.getString("nombre"),
+                        cliente.getInt("id"),
+                        cliente.getString("nombre_cliente"),
                         cliente.getString("telefono"),
                         cliente.getString("direccion"),
                         cliente.getString("entre_1"),
