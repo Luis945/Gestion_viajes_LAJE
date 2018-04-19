@@ -51,17 +51,11 @@
                     android:id="@+id/busqueda_btn"/>
             </LinearLayout>
         </LinearLayout>
-       <android.support.v4.widget.SwipeRefreshLayout
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:id="@+id/actualizarVT"
-           android:layout_weight="1"
-           tools:ignore="MergeRootFrame">
       <android.support.v7.widget.RecyclerView
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          android:id="@+id/verViajesT">
+          android:id="@+id/verViajesT"
+          android:layout_weight="1">
       </android.support.v7.widget.RecyclerView>
-       </android.support.v4.widget.SwipeRefreshLayout>
    </LinearLayout>
 </FrameLayout>
