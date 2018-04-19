@@ -12,5 +12,11 @@
         android:layout_height="match_parent">
 
     </android.support.v7.widget.RecyclerView>
+    <ProgressBar
+        android:id="@+id/barrawait"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        />
 
 </FrameLayout>

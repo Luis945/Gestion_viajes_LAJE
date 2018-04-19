@@ -4,12 +4,14 @@ import android.content.Context;
 import android.graphics.Path;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -54,6 +56,10 @@ public class veroperadoras extends Fragment implements Response.ErrorListener,Re
     public static ArrayList<Operadora> listaoperadoras;
     RecyclerView reciclador;
     final String URL="http://rtaxis.uttsistemas.com/veroperadoras";
+    Handler handler = new Handler();
+    int contadorcargando=0;
+    ProgressBar cargando;
+
 
 
     public veroperadoras() {
@@ -96,10 +102,27 @@ public class veroperadoras extends Fragment implements Response.ErrorListener,Re
         listaoperadoras= new ArrayList<>();
         reciclador = (RecyclerView)view.findViewById(R.id.recycleroperadoras);
         reciclador.setLayoutManager(new GridLayoutManager(getContext(),1));
-
+        cargando=(ProgressBar)view.findViewById(R.id.barrawait);
         StringRequest stringRequest = new StringRequest(Request.Method.GET,URL,this,this);
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(6000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         Volley.newRequestQueue(getContext()).add(stringRequest);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(contadorcargando<100)
+                {
+                    contadorcargando++;
+                    android.os.SystemClock.sleep(120);
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            cargando.setProgress(contadorcargando);
+
+                        }
+                    });
+                }
+            }
+        }).start();
         return view;
     }
 
@@ -141,7 +164,12 @@ public class veroperadoras extends Fragment implements Response.ErrorListener,Re
 
     @Override
     public void onResponse(String response) {
-
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                cargando.setVisibility(View.GONE);
+            }
+        });
         Toast.makeText(getContext(), "¡Conectado en Ver Operadoras!", Toast.LENGTH_SHORT).show();
         try {
             JSONArray array = new JSONArray(response);
