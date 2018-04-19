@@ -107,8 +107,6 @@ public class modificaroperadores extends AppCompatActivity implements View.OnCli
     @Override
     public void onResponse(JSONObject response) {
         Toast.makeText(this, "¡Registro Actualizado!", Toast.LENGTH_SHORT).show();
-        Fragment f = new veroperadoras();
-        ((ventana_principal)getApplicationContext()).getSupportFragmentManager().beginTransaction().replace(R.id.cambio,f).commit();
     }
 
     @Override

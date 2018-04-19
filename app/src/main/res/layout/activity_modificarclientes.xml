@@ -29,64 +29,70 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:paddingBottom="30dp">
 
         <!-- txtnommodcli = TXT NOMBRE MODIFICAR CLIENTE -->
 
         <EditText
+            android:layout_marginBottom="10dp"
             android:id="@+id/txtnommodcli"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="Nombre"
-            />
+            android:inputType="textImeMultiLine" />
 
         <EditText
+            android:layout_marginBottom="10dp"
             android:id="@+id/txttelmodcli"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="Teléfono"
-            />
+            android:inputType="textImeMultiLine|number" />
 
         <EditText
+            android:layout_marginBottom="10dp"
             android:id="@+id/txtdirmodcli"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="Dirección"
-            />
+            android:inputType="textImeMultiLine" />
 
         <EditText
+            android:layout_marginBottom="10dp"
             android:id="@+id/txtentre1modcli"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="Entre 1"
-            />
+            android:inputType="textImeMultiLine" />
 
         <EditText
+            android:layout_marginBottom="10dp"
             android:id="@+id/txtentre2modcli"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="Entre 2"
-            />
+            android:inputType="textImeMultiLine" />
 
         <EditText
+            android:layout_marginBottom="50dp"
             android:id="@+id/txtnotamodcli"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="90dp"
             android:hint="Nota"
-            />
+            android:inputType="textImeMultiLine" />
 
         <Button
             android:id="@+id/btnmodcli"
             android:fontFamily="@font/roboto_light"
             android:textSize="20dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginBottom="40dp"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:background="@color/azul"
             android:text="Modificar Cliente"
             android:textColor="@color/blanco"
             />
-
     </LinearLayout>
 
 </RelativeLayout>

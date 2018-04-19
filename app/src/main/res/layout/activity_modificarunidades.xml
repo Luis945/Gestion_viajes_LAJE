@@ -34,7 +34,7 @@
         <!-- txtnommodcli = TXT NOMBRE MODIFICAR UNIDAD -->
 
         <EditText
-
+            android:enabled="false"
             android:id="@+id/txtidmoduni"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
