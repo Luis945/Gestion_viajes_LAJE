@@ -183,9 +183,12 @@ public class ver_unidades extends Fragment implements Response.ErrorListener,Res
                 listaunidades.add(new Unidad(
                         unidad.getInt("reg"),
                         unidad.getString("estado")
+
+
                 ));
 
             }
+
             unidadesAdapter adaptador = new unidadesAdapter(getContext(), listaunidades);
             reciclador.setAdapter(adaptador);
 

@@ -8,6 +8,11 @@ public class Operadora {
     int Id;
     String Nombre,Apellidos,Estado,Tipo_operadora,Contraseña;
 
+    public Operadora(int id,String contrasena){
+        this.Id=id;
+        this.Contraseña=contrasena;
+    }
+
     public Operadora(int id, String nombre, String apellidos, String estado, String tipo_operadora, String contraseña) {
         Id = id;
         Nombre = nombre;

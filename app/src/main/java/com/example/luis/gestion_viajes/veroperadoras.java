@@ -103,6 +103,9 @@ public class veroperadoras extends Fragment implements Response.ErrorListener,Re
         reciclador = (RecyclerView)view.findViewById(R.id.recycleroperadoras);
         reciclador.setLayoutManager(new GridLayoutManager(getContext(),1));
         cargando=(ProgressBar)view.findViewById(R.id.barrawait);
+
+
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET,URL,this,this);
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(6000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         Volley.newRequestQueue(getContext()).add(stringRequest);
