@@ -40,6 +40,15 @@ public class Viaje {
         this.fecha = fecha;
     }
 
+    public Viaje(int unidad, int operadora, String colonia, String direccion, String fecha,String telefono) {
+        this.unidad = unidad;
+        this.operadora = operadora;
+        this.colonia = colonia;
+        this.direccion = direccion;
+        this.fecha = fecha;
+        this.telefono=telefono;
+    }
+
     public String getFecha() {
         return fecha;
     }
