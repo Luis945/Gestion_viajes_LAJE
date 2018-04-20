@@ -27,6 +27,7 @@ import org.w3c.dom.Text;
 public class modificarunidades extends AppCompatActivity implements View.OnClickListener,
         Response.ErrorListener,Response.Listener<JSONObject> {
 
+
     String estado;
     EditText txtreg;
     Spinner spiner;

@@ -66,6 +66,10 @@ public class iniciosesion extends AppCompatActivity implements View.OnClickListe
     }
 
     public void onClick(View view) {
+
+
+
+
         usuario=txtuser.getText().toString();
         contrasena=txtpass.getText().toString();
 
@@ -114,6 +118,7 @@ public class iniciosesion extends AppCompatActivity implements View.OnClickListe
 
 
         }
+
 
 
 
