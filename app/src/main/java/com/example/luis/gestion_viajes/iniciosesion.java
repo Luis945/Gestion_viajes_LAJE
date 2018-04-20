@@ -105,8 +105,6 @@ public class iniciosesion extends AppCompatActivity implements View.OnClickListe
         }
         
         if(success==true) {
-            Toast.makeText(this, ""+idd, Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, "" + success, Toast.LENGTH_SHORT).show();
             intentir = new Intent(getApplicationContext(), ventana_principal.class);
             startActivity(intentir);
         }else{
