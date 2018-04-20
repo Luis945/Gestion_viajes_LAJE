@@ -89,42 +89,28 @@ public class iniciosesion extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(this, ""+error, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "¡Usuario o Contraseña Incorrectos!", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onResponse(JSONObject response) {
 
-        JSONObject yeisonobject = new JSONObject();
-        yeisonobject=response;
-
-      /*  try {
-
-            yeisonobject.getInt(0);
-            for(x in yeisonobject){
-
-            }
-
-            for (int i=0;i<=yeisonobject.get)
-
-                JSONObject operadora = array.getJSONObject(i);
-
-                listaoperadoras.add(new Operadora(
-                        operadora.getInt("id"),
-                        operadora.getString("nombre"),
-                        operadora.getString("apellidos"),
-                        operadora.getString("estado"),
-                        operadora.getString("tipo_operadora")
-                ));
-
-
-
-        }catch (JSONException e) {
+        String idd="";
+        boolean success=false;
+        try {
+            success = response.getBoolean("success");
+            idd=response.getString("id");
+        } catch (JSONException e) {
             e.printStackTrace();
-        }*/
-
-        Toast.makeText(this, ""+yeisonobject, Toast.LENGTH_SHORT).show();
-        intentir = new Intent(getApplicationContext(),ventana_principal.class);
-        startActivity(intentir);
+        }
+        
+        if(success==true) {
+            Toast.makeText(this, ""+idd, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "" + response, Toast.LENGTH_SHORT).show();
+            intentir = new Intent(getApplicationContext(), ventana_principal.class);
+            startActivity(intentir);
+        }else{
+            Toast.makeText(this, "¡Usuario o Contraseña Incorrectos!", Toast.LENGTH_SHORT).show();
+        }
     }
 }
