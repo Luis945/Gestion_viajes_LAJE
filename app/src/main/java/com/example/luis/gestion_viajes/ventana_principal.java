@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class ventana_principal extends AppCompatActivity
         implements OnNavigationItemSelectedListener,
@@ -95,6 +96,7 @@ public class ventana_principal extends AppCompatActivity
 
         if (id== R.id.ventana_p) {
             fragment= new ventana();
+          // fragment.getFragmentManager().beginTransaction().replace(R.id.cambio,MainScreenSubView.).
             fragmenttransaction=true;
 
         }else if (id == R.id.nuevabase) {

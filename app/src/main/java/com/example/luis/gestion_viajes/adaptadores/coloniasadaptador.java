@@ -2,6 +2,7 @@ package com.example.luis.gestion_viajes.adaptadores;
 
 import android.content.Context;
 import android.net.Uri;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.luis.gestion_viajes.R;
+import com.example.luis.gestion_viajes.fragment_verclientes;
 import com.example.luis.gestion_viajes.objetos.Colonia;
+import com.example.luis.gestion_viajes.ventana_principal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,10 +60,11 @@ public class coloniasadaptador extends RecyclerView.Adapter<coloniasadaptador.Da
         @Override
         public void onClick(View view) {
 
+
             int posicion=getAdapterPosition();
             Colonia col = this.listacolonias.get(posicion);
             /*ESTA COSA NO LA VOY A UTILIZAR PERO SIRVE PARA ABRIR OTRO FRAGMENT*/
-            //((ventana_principal)context).getSupportFragmentManager().beginTransaction().replace(R.id.cambio,f).commit();
+           // ((ventana_principal)context).getSupportFragmentManager().beginTransaction().replace(R.id.cambio,f).commit();
             Toast.makeText(context, ""+col.getNombre().toString(), Toast.LENGTH_SHORT).show();
         }
     }

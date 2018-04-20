@@ -1,5 +1,6 @@
 package com.example.luis.gestion_viajes;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +28,9 @@ import org.json.JSONObject;
 public class modificaroperadores extends AppCompatActivity implements View.OnClickListener,
         Response.ErrorListener,
         Response.Listener<JSONObject> {
+
+    /*FRAGMENT QUE SE ABRIRÁ DESPUÉS DE MODIFICAR EXITOSAMENTE, ANALMENTE*/
+    Fragment f = new fragment_verclientes();
 
     String estado;
     TextView txtid,txtnombre,txtapellido;
