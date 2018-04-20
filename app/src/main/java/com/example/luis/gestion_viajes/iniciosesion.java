@@ -64,7 +64,11 @@ public class iniciosesion extends AppCompatActivity implements View.OnClickListe
         usuario=txtuser.getText().toString();
         contrasena=txtpass.getText().toString();
 
-        if(usuario!=""||contrasena!=""){
+        if(usuario.isEmpty()||contrasena.isEmpty()) {
+            Toast.makeText(this, "¡Completa los campos!", Toast.LENGTH_SHORT).show();
+        }
+
+        else {
             switch (view.getId()){
                 case R.id.btnini:{
 
@@ -82,10 +86,13 @@ public class iniciosesion extends AppCompatActivity implements View.OnClickListe
                     request.add(jsonObjectRequest);
                 }break;
             }
-        }else if(usuario.equals("")||contrasena.equals("")){
-            Toast.makeText(this, "¡Completa los campos!", Toast.LENGTH_SHORT).show();
+
         }
-    }
+
+
+        }
+
+
 
     @Override
     public void onErrorResponse(VolleyError error) {
