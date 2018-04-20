@@ -11,6 +11,18 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="30dp"
+            android:text="Telefono:"
+            android:textSize="25sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/texto_telefono"
+            android:text="2322232424244"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
             android:text="Dirección:"
             android:textSize="25sp"/>
         <TextView
@@ -79,7 +91,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="27-08-18 13:00:00"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:layout_weight="1"
                     android:id="@+id/texto_fecha"
                     />

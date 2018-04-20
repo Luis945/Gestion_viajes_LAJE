@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.luis.gestion_viajes.R;
 import com.example.luis.gestion_viajes.objetos.Viaje;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,7 +19,7 @@ import java.util.List;
 
 public class verViajesAdapter extends RecyclerView.Adapter<verViajesAdapter.holder> {
 
-    List<Viaje> viajes;
+    List<Viaje> viajes = new ArrayList<>();
     Context context;
 
     public verViajesAdapter(List<Viaje> viajes, Context context) {
@@ -40,8 +41,9 @@ public class verViajesAdapter extends RecyclerView.Adapter<verViajesAdapter.hold
         Viaje viaje= viajes.get(position);
         holder.textView1.setText(viaje.getDireccion());
         holder.textView2.setText(viaje.getColonia());
-        holder.textView3.setText(viaje.getUnidad());
+        holder.textView3.setText(String.valueOf(viaje.getUnidad()));
         holder.textView4.setText(viaje.getFecha());
+        holder.textView5.setText(viaje.getTelefono());
     }
 
     @Override
@@ -51,7 +53,7 @@ public class verViajesAdapter extends RecyclerView.Adapter<verViajesAdapter.hold
 
     class holder extends RecyclerView.ViewHolder{
 
-        TextView textView1,textView2,textView3,textView4;
+        TextView textView1,textView2,textView3,textView4,textView5;
 
         public holder(View view){
             super(view);
@@ -60,6 +62,7 @@ public class verViajesAdapter extends RecyclerView.Adapter<verViajesAdapter.hold
         textView2= view.findViewById(R.id.texto_colonia);
         textView3= view.findViewById(R.id.texto_unidad);
         textView4= view.findViewById(R.id.texto_fecha);
+        textView5= view.findViewById(R.id.texto_telefono);
 
         }
 
