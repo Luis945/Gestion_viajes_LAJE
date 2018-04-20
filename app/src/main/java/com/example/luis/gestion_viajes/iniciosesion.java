@@ -82,7 +82,7 @@ public class iniciosesion extends AppCompatActivity implements View.OnClickListe
                     request.add(jsonObjectRequest);
                 }break;
             }
-        }else{
+        }else if(usuario.equals("")||contrasena.equals("")){
             Toast.makeText(this, "¡Completa los campos!", Toast.LENGTH_SHORT).show();
         }
     }
