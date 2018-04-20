@@ -103,72 +103,81 @@ public class Nuevo_operador extends Fragment {
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cargando.setVisibility(View.VISIBLE);
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        while(contadorcargando<100)
-                        {
-                            contadorcargando++;
-                            android.os.SystemClock.sleep(120);
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    cargando.setProgress(contadorcargando);
-
-                                }
-                            });
-                        }
-                    }
-                }).start();
-                JSONObject operadora = new JSONObject();
-                try {
-                    operadora.put("id",num_op.getText().toString());
-                    operadora.put("nombre", nombres.getText().toString());
-                    operadora.put("apellidos",apellidos.getText().toString());
-                    operadora.put("estado","Activo");
-                    operadora.put("tipo_operadora","admin");
-                    operadora.put("contrasena",pass.getText().toString());
-                } catch (JSONException ex) {
-                    ex.printStackTrace();
+                if(num_op.getText().toString().isEmpty()||nombres.getText().toString().isEmpty()||apellidos.getText().toString().isEmpty()||pass.getText().toString().isEmpty())
+                {
+                    Toast.makeText(getContext(), "¡Completa los campos!", Toast.LENGTH_SHORT).show();
                 }
-
-
-                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url_post, operadora, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                cargando.setVisibility(View.GONE);
-                            }
-                        });
-                        Toast.makeText(getContext(), "Regitro existoso", Toast.LENGTH_SHORT).show();
-                        Log.d("Kek", ""+response);
-                        nombres.setText("");
-                        num_op.setText("");
-                        apellidos.setText("");
-                        pass.setText("");
-
-                    }
-                },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
+                else
+                {
+                    cargando.setVisibility(View.VISIBLE);
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            while(contadorcargando<100)
+                            {
+                                contadorcargando++;
+                                android.os.SystemClock.sleep(120);
                                 handler.post(new Runnable() {
                                     @Override
                                     public void run() {
-                                        cargando.setVisibility(View.GONE);
+                                        cargando.setProgress(contadorcargando);
+
                                     }
                                 });
-                                Toast.makeText(getContext(), "Regitro fallido", Toast.LENGTH_SHORT).show();
-                                Log.d("error", ""+error);
                             }
                         }
-                );
+                    }).start();
+                    JSONObject operadora = new JSONObject();
+                    try {
+                        operadora.put("id",num_op.getText().toString());
+                        operadora.put("nombre", nombres.getText().toString());
+                        operadora.put("apellidos",apellidos.getText().toString());
+                        operadora.put("estado","Activo");
+                        operadora.put("tipo_operadora","admin");
+                        operadora.put("contrasena",pass.getText().toString());
+                    } catch (JSONException ex) {
+                        ex.printStackTrace();
+                    }
 
-                jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-                request.add(jsonObjectRequest);
+
+                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url_post, operadora, new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    cargando.setVisibility(View.GONE);
+                                }
+                            });
+                            Toast.makeText(getContext(), "Regitro existoso", Toast.LENGTH_SHORT).show();
+                            Log.d("Kek", ""+response);
+                            nombres.setText("");
+                            num_op.setText("");
+                            apellidos.setText("");
+                            pass.setText("");
+
+                        }
+                    },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    handler.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            cargando.setVisibility(View.GONE);
+                                        }
+                                    });
+                                    Toast.makeText(getContext(), "Regitro fallido", Toast.LENGTH_SHORT).show();
+                                    Log.d("error", ""+error);
+                                }
+                            }
+                    );
+
+                    jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                    request.add(jsonObjectRequest);
+                }
+
+
             }
         });
         limpiar.setOnClickListener(new View.OnClickListener() {

@@ -97,68 +97,76 @@ public class Nueva_unidad extends Fragment {
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                cargando.setVisibility(View.VISIBLE);
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        while(contadorcargando<100)
-                        {
-                            contadorcargando++;
-                            android.os.SystemClock.sleep(120);
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    cargando.setProgress(contadorcargando);
-
-                                }
-                            });
-                        }
-                    }
-                }).start();
-                JSONObject unidad = new JSONObject();
-                try {
-                    unidad.put("reg", numero_unidad.getText().toString());
-                    unidad.put("estado",Activo);
-
-
-                } catch (JSONException ex) {
-                    ex.printStackTrace();
+                if(numero_unidad.getText().toString().isEmpty())
+                {
+                    Toast.makeText(getContext(), "¡Completa los campos!", Toast.LENGTH_SHORT).show();
                 }
-
-
-                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url_post, unidad, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                cargando.setVisibility(View.GONE);
-                            }
-                        });
-                        Toast.makeText(getContext(), "Regitro existoso", Toast.LENGTH_SHORT).show();
-                        Log.d("Kek", ""+response);
-                        numero_unidad.setText("");
-
-                    }
-                },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
+                else
+                {
+                    cargando.setVisibility(View.VISIBLE);
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            while(contadorcargando<100)
+                            {
+                                contadorcargando++;
+                                android.os.SystemClock.sleep(120);
                                 handler.post(new Runnable() {
                                     @Override
                                     public void run() {
-                                        cargando.setVisibility(View.GONE);
+                                        cargando.setProgress(contadorcargando);
+
                                     }
                                 });
-                                Toast.makeText(getContext(), "Regitro fallido", Toast.LENGTH_SHORT).show();
-                                Log.d("error", ""+error);
                             }
                         }
-                );
+                    }).start();
+                    JSONObject unidad = new JSONObject();
+                    try {
+                        unidad.put("reg", numero_unidad.getText().toString());
+                        unidad.put("estado",Activo);
 
-                jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-                request.add(jsonObjectRequest);
+
+                    } catch (JSONException ex) {
+                        ex.printStackTrace();
+                    }
+
+
+                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url_post, unidad, new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    cargando.setVisibility(View.GONE);
+                                }
+                            });
+                            Toast.makeText(getContext(), "Regitro existoso", Toast.LENGTH_SHORT).show();
+                            Log.d("Kek", ""+response);
+                            numero_unidad.setText("");
+
+                        }
+                    },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    handler.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            cargando.setVisibility(View.GONE);
+                                        }
+                                    });
+                                    Toast.makeText(getContext(), "Regitro fallido", Toast.LENGTH_SHORT).show();
+                                    Log.d("error", ""+error);
+                                }
+                            }
+                    );
+
+                    jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                    request.add(jsonObjectRequest);
+                }
+
+
             }
         });
         limpiar.setOnClickListener(new View.OnClickListener() {

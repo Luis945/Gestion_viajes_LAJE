@@ -107,68 +107,76 @@ public class nueva_Basee extends Fragment{
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cargando.setVisibility(View.VISIBLE);
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        while(contadorcargando<100)
-                        {
-                            contadorcargando++;
-                            android.os.SystemClock.sleep(120);
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    cargando.setProgress(contadorcargando);
-
-                                }
-                            });
-                        }
-                    }
-                }).start();
-                JSONObject base = new JSONObject();
-                try {
-                    base.put("nombre",nombre.getText().toString());
-                    base.put("direccion",direccion.getText().toString());
-                    base.put("tipo",combotipo.getSelectedItem().toString());
-                } catch (JSONException ex) {
-                    ex.printStackTrace();
+                if(nombre.getText().toString().isEmpty()||direccion.getText().toString().isEmpty())
+                {
+                    Toast.makeText(getContext(), "¡Completa los campos!", Toast.LENGTH_SHORT).show();
                 }
-
-
-                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url_post, base , new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                cargando.setVisibility(View.GONE);
-                            }
-                        });
-                        Toast.makeText(getContext(), "Regitro existoso", Toast.LENGTH_SHORT).show();
-                        Log.d("Kek", ""+response);
-                        nombre.setText("");
-                        direccion.setText("");
-
-
-                    }
-                },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
+                else
+                {
+                    cargando.setVisibility(View.VISIBLE);
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            while(contadorcargando<100)
+                            {
+                                contadorcargando++;
+                                android.os.SystemClock.sleep(120);
                                 handler.post(new Runnable() {
                                     @Override
                                     public void run() {
-                                        cargando.setVisibility(View.GONE);
+                                        cargando.setProgress(contadorcargando);
+
                                     }
                                 });
-                                Toast.makeText(getContext(), "Regitro fallido", Toast.LENGTH_SHORT).show();
-                                Log.d("error", ""+error);
                             }
                         }
-                );
+                    }).start();
+                    JSONObject base = new JSONObject();
+                    try {
+                        base.put("nombre",nombre.getText().toString());
+                        base.put("direccion",direccion.getText().toString());
+                        base.put("tipo",combotipo.getSelectedItem().toString());
+                    } catch (JSONException ex) {
+                        ex.printStackTrace();
+                    }
 
-                jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-                request.add(jsonObjectRequest);
+
+                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url_post, base , new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    cargando.setVisibility(View.GONE);
+                                }
+                            });
+                            Toast.makeText(getContext(), "Regitro existoso", Toast.LENGTH_SHORT).show();
+                            Log.d("Kek", ""+response);
+                            nombre.setText("");
+                            direccion.setText("");
+
+
+                        }
+                    },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    handler.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            cargando.setVisibility(View.GONE);
+                                        }
+                                    });
+                                    Toast.makeText(getContext(), "Regitro fallido", Toast.LENGTH_SHORT).show();
+                                    Log.d("error", ""+error);
+                                }
+                            }
+                    );
+
+                    jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                    request.add(jsonObjectRequest);
+                }
+
             }
         });
         limpiar.setOnClickListener(new View.OnClickListener() {
