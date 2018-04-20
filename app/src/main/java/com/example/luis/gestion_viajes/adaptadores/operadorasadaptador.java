@@ -43,8 +43,7 @@ public class operadorasadaptador extends RecyclerView.Adapter<operadorasadaptado
         Operadora operadora = listaoperadoras.get(position);
         String id=Integer.toString(operadora.getId());
         holder.txtid.setText(id);
-        holder.txtnombre.setText(operadora.getNombre());
-        holder.txtapellido.setText(operadora.getApellidos());
+        holder.txtnombre.setText(operadora.getNombre()+"."+operadora.getApellidos().toUpperCase());
         holder.txtestado.setText(operadora.getEstado());
         holder.txttipo.setText(operadora.getTipo_operadora());
     }
@@ -70,7 +69,7 @@ public class operadorasadaptador extends RecyclerView.Adapter<operadorasadaptado
 
             txtid=(TextView)itemView.findViewById(R.id.txtid);
             txtnombre=(TextView)itemView.findViewById(R.id.txtnombre);
-            txtapellido=(TextView)itemView.findViewById(R.id.txtapellido);
+
             txtestado=(TextView)itemView.findViewById(R.id.txtestado);
             txttipo=(TextView)itemView.findViewById(R.id.txttipo);
         }

@@ -80,7 +80,7 @@ public class coloniasadaptador extends RecyclerView.Adapter<coloniasadaptador.Da
     @Override
     public void onBindViewHolder(coloniasadaptador.DatosViewHolder holder, int position) {
         Colonia colonia = listacolonias.get(position);
-        holder.nomcolonia.setText("Nombre: "+colonia.getNombre());
+        holder.nomcolonia.setText(colonia.getNombre().toUpperCase());
     }
 
     @Override

@@ -3,51 +3,110 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/sombra"
-        android:paddingLeft="10dp"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp">
+        android:layout_height="70dp"
+        android:weightSum="1"
+        android:layout_margin="10dp"
+        >
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtid"
-            android:text="ID"
-            android:textSize="25dp"/>
-        
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtnombre"
-            android:text="Nombre"
-            android:textSize="25dp"/>
+        <LinearLayout
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="5dp">
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:background="@drawable/circulo_fondo">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtid"
+                    android:text="ID"
+                    android:textSize="25dp"
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/blanco"
+                    android:fontFamily="@font/montserrat"
+                    />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtapellido"
-            android:text="Apellido"
-            android:textSize="25dp"/>
-        
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtestado"
-            android:text="Estado"
-            android:textSize="25dp"/>
-        
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txttipo"
-            android:text="Tipo Operadora"
-            android:textSize="25dp"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/txtnombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingTop="16dp"
+                android:text="Nombre.Apellido"
+                android:textColor="#848602"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/montserrat"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                >
+
+                <TextView
+                    android:id="@+id/txttipo"
+                    android:layout_width="match_parent"
+                    android:layout_height="29dp"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:text="Admin"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    />
+
+                <TextView
+                    android:id="@+id/txtestado"
+                    android:layout_width="match_parent"
+                    android:layout_height="29dp"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:text="Estado"
+                    android:textSize="12sp"
+                    android:textStyle="italic"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#56ffffff">
 
     </LinearLayout>
 
