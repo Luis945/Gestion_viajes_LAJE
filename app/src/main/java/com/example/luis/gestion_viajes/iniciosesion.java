@@ -1,11 +1,13 @@
 package com.example.luis.gestion_viajes;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +39,9 @@ public class iniciosesion extends AppCompatActivity implements View.OnClickListe
     Intent intentir;
     TextView txtuser,txtpass;
     String usuario,contrasena;
+    ProgressBar cargando;
+    Handler handler = new Handler();
+    int contadorcargando=0;
     public static ArrayList<Operadora> listaoperadora;
 
 
@@ -56,7 +61,7 @@ public class iniciosesion extends AppCompatActivity implements View.OnClickListe
         botonir = (Button) findViewById(R.id.btnini);
         botonir.setOnClickListener(this);
         listaoperadora=new ArrayList<>();
-
+        cargando=(ProgressBar)findViewById(R.id.barrawait);
         request= Volley.newRequestQueue(this);
     }
 
@@ -71,6 +76,24 @@ public class iniciosesion extends AppCompatActivity implements View.OnClickListe
         else {
             switch (view.getId()){
                 case R.id.btnini:{
+                    cargando.setVisibility(View.VISIBLE);
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            while(contadorcargando<100)
+                            {
+                                contadorcargando++;
+                                android.os.SystemClock.sleep(120);
+                                handler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        cargando.setProgress(contadorcargando);
+
+                                    }
+                                });
+                            }
+                        }
+                    }).start();
 
                     jsonObject = new JSONObject();
                     try{
@@ -104,6 +127,7 @@ public class iniciosesion extends AppCompatActivity implements View.OnClickListe
 
         String idd="";
         boolean success=false;
+
         try {
             success = response.getBoolean("success");
             idd=response.getString("id");
@@ -112,9 +136,21 @@ public class iniciosesion extends AppCompatActivity implements View.OnClickListe
         }
         
         if(success==true) {
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    cargando.setVisibility(View.GONE);
+                }
+            });
             intentir = new Intent(getApplicationContext(), ventana_principal.class);
             startActivity(intentir);
         }else{
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    cargando.setVisibility(View.GONE);
+                }
+            });
             Toast.makeText(this, "¡Usuario o Contraseña Incorrectos!", Toast.LENGTH_SHORT).show();
         }
     }
